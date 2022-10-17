@@ -42,6 +42,30 @@ const theme = createTheme({
         },
       },
     },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: '#f6f6f6',
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        notchedOutline: {
+          color: '#f6f6f6 !important',
+          borderColor: '#f6f6f6 !important',
+          borderRadius: '15px',
+        },
+      },
+    },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          borderColor: '#f6f6f6',
+          color: '#f6f6f6 !important',
+        },
+      },
+    },
   },
   overrides: {
     MuiSwitch: {
