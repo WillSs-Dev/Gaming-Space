@@ -22,7 +22,7 @@ function Header() {
 
   return (
     <AppBar position='relative'>
-      <Toolbar disableGutters={ mobile ? true : false } sx={{ justifyContent: 'space-between' }}>
+      <Toolbar disableGutters={ mobile ? true : false } sx={{ justifyContent: 'space-between', px: 2 }}>
         <IconButton sx={{ color: '#f6f6f6', display: mobile ? '' : 'none' }}>
           <Menu fontSize='large' />
         </IconButton>

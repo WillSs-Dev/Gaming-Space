@@ -34,7 +34,6 @@ const theme = createTheme({
     MuiToggleButton: {
       styleOverrides: {
         root: {
-          // backgroundColor: '#05101c',
           color: '#f6f6f6',
           '&.Mui-selected': {
             color: '#0680fc',
@@ -47,6 +46,16 @@ const theme = createTheme({
         root: {
           color: '#f6f6f6',
         },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          borderBottom: '1px solid #0288d1',
+        },
+        icon: {
+          color: '#0288d1'
+        }
       },
     },
     MuiOutlinedInput: {
@@ -63,6 +72,14 @@ const theme = createTheme({
         root: {
           borderColor: '#f6f6f6',
           color: '#f6f6f6 !important',
+        },
+      },
+    },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          padding: '0 !important',
+          maxWidth: '100vW !important'
         },
       },
     },
