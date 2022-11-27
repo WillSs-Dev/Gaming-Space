@@ -1,5 +1,4 @@
-import { Typography, Container } from '@mui/material';
-import { Header, SearchBar } from '../components/';
+import { Header, SearchBar, Hero } from '../components/';
 import React from 'react';
 
 export default function Home() {
@@ -7,9 +6,7 @@ export default function Home() {
     <>
       <Header />
       <SearchBar />
-      <Container>
-        <Typography variant='h3'>Main page content</Typography>
-      </Container>
+      <Hero />
     </>
   );
 }
