@@ -18,6 +18,9 @@ const theme = createTheme({
     },
   },
   typography: {
+    h2: {
+      color: '#f6f6f6',
+    },
     button: {
       color: '#f6f6f6',
     },
@@ -78,7 +81,7 @@ const theme = createTheme({
     MuiContainer: {
       styleOverrides: {
         root: {
-          padding: '0 !important',
+          padding: '0',
           maxWidth: '100vW !important'
         },
       },

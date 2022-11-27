@@ -32,7 +32,7 @@ function SearchBar() {
   };
 
   return (
-    <Container>
+    <Container sx={{ px: '0 !important' }}>
       <Toolbar
         sx={{
           py: 2,
