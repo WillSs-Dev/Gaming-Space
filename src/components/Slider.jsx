@@ -8,8 +8,9 @@ import {
   useTheme,
   Chip,
   Avatar,
+  useMediaQuery,
 } from '@mui/material';
-import { Navigation, Pagination, A11y } from 'swiper';
+import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -18,22 +19,24 @@ import { fiveGames } from '../api/mock-responses';
 const { results } = fiveGames;
 
 function Slider() {
-  const { palette } = useTheme();
+  const theme = useTheme();
+  const { palette } = theme;
+  const mobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
-    <Paper sx={{ width: '90vW', p: 5, m: 'auto' }}>
+    <Paper sx={{ p: 5, m: 'auto' }}>
       <Swiper
-        modules={[Navigation, Pagination, A11y]}
+        modules={ [Navigation, Pagination]}
         slidesPerView={1}
         navigation={{ clickable: true }}
         pagination
         loop>
         {results.map((game) => (
           <SwiperSlide key={game.id}>
-            <Card sx={{ display: 'flex' }}>
+            <Card sx={{ display: mobile ? 'block' : 'flex' }}>
               <CardMedia
                 component='img'
-                sx={{ width: 600, heigth: 300, objectFit: 'cover' }}
+                sx={{ maxWidth: 600, maxHeight: 300, minHeight: 300 }}
                 alt={game.name}
                 image={game.background_image}
               />
