@@ -24,7 +24,7 @@ function Slider() {
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
-    <Paper sx={{ p: 5, m: 'auto' }}>
+    <Paper sx={{ p: 3, m: 'auto' }}>
       <Swiper
         modules={ [Navigation, Pagination]}
         slidesPerView={1}
@@ -36,7 +36,7 @@ function Slider() {
             <Card sx={{ display: mobile ? 'block' : 'flex' }}>
               <CardMedia
                 component='img'
-                sx={{ maxWidth: 600, maxHeight: 300, minHeight: 300 }}
+                sx={{ maxWidth: mobile ? 800 : 600, maxHeight: 300, minHeight: 300 }}
                 alt={game.name}
                 image={game.background_image}
               />
