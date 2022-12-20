@@ -1,4 +1,4 @@
-import { Header, SearchBar, Hero } from '../components/';
+import { Header, SearchBar, Hero, GamesList } from '../components/';
 import React from 'react';
 
 export default function Home() {
@@ -7,6 +7,7 @@ export default function Home() {
       <Header />
       <SearchBar />
       <Hero />
+      <GamesList />
     </>
   );
 }
