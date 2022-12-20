@@ -19211,6 +19211,4 @@ const thirtyGames = {
   nofollow_collections: ['stores'],
 };
 
-const mockResponses = { gtaV, fiveGames, thirtyGames };
-
-export default mockResponses;
+export { gtaV, fiveGames, thirtyGames };
