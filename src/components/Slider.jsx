@@ -16,6 +16,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { fiveGames } from '../api/mock-responses';
+import getIcon from '../utils/icons';
 const { results } = fiveGames;
 
 function Slider() {
@@ -62,7 +63,7 @@ function Slider() {
                     Released on:
                   </Typography>
                   {game.parent_platforms.map(({ platform }) => (
-                    <Chip key={platform.id} label={platform.name} />
+                    <Chip key={platform.id} label={platform.name} icon={<img alt={platform.name} src={getIcon[platform.name]} />} />
                   ))}
                 </CardContent>
               </Box>
