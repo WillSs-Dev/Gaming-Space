@@ -16,6 +16,7 @@ function GameCard({ game, mobile }) {
     <Card
       onMouseOver={() => setShowInfo(true)}
       onMouseLeave={() => setShowInfo(false)}
+      sx={{ overflowX: 'hidden'}}
     >
       <CardMedia
         alt={game.name}
@@ -31,15 +32,15 @@ function GameCard({ game, mobile }) {
 
       <CardContent
         sx={{
-          maxWidth: mobile ? 180 : 350,
-          minWidth: mobile ? 180 : 350,
+          maxWidth: mobile ? 169 : 318,
+          minWidth: mobile ? 169 : 318,
           maxHeight: 200,
           minHeight: 200,
           opacity: showInfo ? 1 : 0,
-          overflow: 'hidden',
           position: 'absolute',
           transform: showInfo ? 'translate(0, -100%)' : 'translate(0, -80%)',
           transition: 'all 0.4s ease-in',
+          backgroundColor: 'red',
         }}>
         <Typography variant='body1'>{game.name}</Typography>
         <Typography variant='body2'>Genres:</Typography>
