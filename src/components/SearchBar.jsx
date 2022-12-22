@@ -22,7 +22,7 @@ const categories = [
   { id: 4, name: 'RPG' },
 ];
 
-function SearchBar() {
+function SearchBar({ viewSlider }) {
   const { palette } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState('');
 
@@ -40,8 +40,10 @@ function SearchBar() {
           justifyContent: 'space-around',
         }}>
         <ButtonGroup variant='text' color='info'>
-          <Button>All</Button>
-          <Button sx={{ width: '150px', textTransform: 'none' }}>
+          <Button onClick={() => viewSlider(false)}>All</Button>
+          <Button
+            onClick={() => viewSlider(false)}
+            sx={{ width: '150px', textTransform: 'none' }}>
             <FormControl fullWidth>
               <InputLabel
                 sx={{ color: '#0288d1 !important' }}
@@ -64,7 +66,7 @@ function SearchBar() {
               </Select>
             </FormControl>
           </Button>
-          <Button>News</Button>
+          <Button onClick={() => viewSlider(false)}>News</Button>
         </ButtonGroup>
         <FormControl>
           <InputLabel htmlFor='outlined-adornment-search'>Search</InputLabel>
@@ -73,7 +75,7 @@ function SearchBar() {
             id='outlined-adornment-search'
             endAdornment={
               <InputAdornment position='end'>
-                <IconButton>
+                <IconButton onClick={() => viewSlider(false)}>
                   <Search />
                 </IconButton>
               </InputAdornment>

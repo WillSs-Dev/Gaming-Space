@@ -1,12 +1,8 @@
-import {
-  Container,
-  Typography,
-} from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import React from 'react';
 import { Slider } from './';
 
-function Hero() {
-
+function Hero({ showSlider }) {
   return (
     <Container sx={{ py: 1 }}>
       <Typography
@@ -14,12 +10,12 @@ function Hero() {
         sx={{
           fontFamily: '"Righteous", sans-serif',
           textAlign: 'center',
-          mb: 2,
-          mt: 1,
+          mb: showSlider ? 2 : 0,
+          mt: showSlider ? 1 : 2,
         }}>
-        Popular now
+        {showSlider ? 'Popular now' : 'All games'}
       </Typography>
-      <Slider />
+      {showSlider ? <Slider /> : ''}
     </Container>
   );
 }
