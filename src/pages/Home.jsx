@@ -1,4 +1,4 @@
-import { Header, SearchBar, Hero, GamesList } from '../components/';
+import { Header, SearchBar, Hero, GamesList, Footer } from '../components/';
 import React, { useState } from 'react';
 
 export default function Home() {
@@ -9,6 +9,7 @@ export default function Home() {
       <SearchBar viewSlider={setShowSlider} />
       <Hero showSlider={showSlider} />
       <GamesList />
+      <Footer />
     </>
   );
 }

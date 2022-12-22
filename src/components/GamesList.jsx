@@ -14,7 +14,7 @@ function GamesList() {
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
-    <Box mt={3}>
+    <Box mt={3} pb={10}>
       <Grid
         container
         direction='row'
