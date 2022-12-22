@@ -42,7 +42,7 @@ function GameCard({ game, mobile }) {
           overflow: 'hidden',
           transform: showInfo ? 'translate(0, -100%)' : 'translate(0, -80%)',
           transition: 'all 0.4s ease-in-out',
-          backgroundColor: 'rgba(37, 37, 37, 0.720)',
+          backgroundColor: 'rgba(5, 16, 28, 0.720)',
         }}>
         <Typography variant='body1'>{game.name}</Typography>
         <Typography variant='body2'>Genres:</Typography>
