@@ -39,6 +39,7 @@ function GameCard({ game, mobile }) {
           minHeight: 200,
           opacity: showInfo ? 1 : 0,
           position: 'absolute',
+          overflow: 'hidden',
           transform: showInfo ? 'translate(0, -100%)' : 'translate(0, -80%)',
           transition: 'all 0.4s ease-in-out',
           backgroundColor: 'rgba(37, 37, 37, 0.720)',
@@ -46,13 +47,14 @@ function GameCard({ game, mobile }) {
         <Typography variant='body1'>{game.name}</Typography>
         <Typography variant='body2'>Genres:</Typography>
         {game.genres.map((genre) => (
-          <Chip key={genre.id} label={genre.name} />
+          <Chip key={genre.id} label={genre.name} sx={{ pl: 0.5, m: 0.5 }} />
         ))}
         <Typography variant='body2'>Platforms:</Typography>
         <Grid container spacing={0} direction='row'>
           {game.parent_platforms.map(({ platform }) => (
-            <Grid item xs={mobile ? 6 : 3}>
+            <Grid item>
               <Chip
+                sx={{ pl: 0.5, m: 0.5 }}
                 icon={<img alt={platform.name} src={getIcon[platform.name]} />}
                 key={platform.id}
                 label={platform.name}

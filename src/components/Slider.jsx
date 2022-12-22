@@ -27,7 +27,7 @@ function Slider() {
   return (
     <Paper sx={{ p: 3, m: 'auto' }}>
       <Swiper
-        modules={ [Navigation, Pagination]}
+        modules={[Navigation, Pagination]}
         slidesPerView={1}
         navigation={{ clickable: true }}
         pagination
@@ -37,7 +37,11 @@ function Slider() {
             <Card sx={{ display: mobile ? 'block' : 'flex' }}>
               <CardMedia
                 component='img'
-                sx={{ maxWidth: mobile ? 800 : 600, maxHeight: 300, minHeight: 300 }}
+                sx={{
+                  maxWidth: mobile ? 800 : 600,
+                  maxHeight: 300,
+                  minHeight: 300,
+                }}
                 alt={game.name}
                 image={game.background_image}
               />
@@ -57,13 +61,27 @@ function Slider() {
                     Genres
                   </Typography>
                   {game.genres.map((genre) => (
-                    <Chip key={genre.id} label={genre.name} />
+                    <Chip
+                      key={genre.id}
+                      label={genre.name}
+                      sx={{ pl: 0.5, m: 0.5 }}
+                    />
                   ))}
                   <Typography variant='body1' color='palette.text.primary'>
                     Released on:
                   </Typography>
                   {game.parent_platforms.map(({ platform }) => (
-                    <Chip key={platform.id} label={platform.name} icon={<img alt={platform.name} src={getIcon[platform.name]} />} />
+                    <Chip
+                      key={platform.id}
+                      label={platform.name}
+                      icon={
+                        <img
+                          alt={platform.name}
+                          src={getIcon[platform.name]}
+                          sx={{ pl: 0.5, m: 0.5 }}
+                        />
+                      }
+                    />
                   ))}
                 </CardContent>
               </Box>
