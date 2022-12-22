@@ -86,6 +86,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          border: '#f6f6f6 0.7px solid !important',
+        }
+      },
+    },
   },
   overrides: {
     MuiSwitch: {
