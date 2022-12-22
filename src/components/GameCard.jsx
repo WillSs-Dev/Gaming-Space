@@ -16,7 +16,6 @@ function GameCard({ game, mobile }) {
     <Card
       onMouseOver={() => setShowInfo(true)}
       onMouseLeave={() => setShowInfo(false)}
-      sx={{ overflowX: 'hidden'}}
     >
       <CardMedia
         alt={game.name}
@@ -27,6 +26,8 @@ function GameCard({ game, mobile }) {
           minWidth: mobile ? 200 : 350,
           maxHeight: 270,
           minHeight: 270,
+          filter: showInfo ? 'blur(4px)' : '0',
+          transition: 'all 0.8s ease-in-out',
         }}
       />
 
@@ -39,8 +40,8 @@ function GameCard({ game, mobile }) {
           opacity: showInfo ? 1 : 0,
           position: 'absolute',
           transform: showInfo ? 'translate(0, -100%)' : 'translate(0, -80%)',
-          transition: 'all 0.4s ease-in',
-          backgroundColor: 'red',
+          transition: 'all 0.4s ease-in-out',
+          backgroundColor: 'rgba(37, 37, 37, 0.720)',
         }}>
         <Typography variant='body1'>{game.name}</Typography>
         <Typography variant='body2'>Genres:</Typography>
@@ -50,7 +51,7 @@ function GameCard({ game, mobile }) {
         <Typography variant='body2'>Platforms:</Typography>
         <Grid container spacing={0} direction='row'>
           {game.parent_platforms.map(({ platform }) => (
-            <Grid item xs={mobile ? 6 : 4}>
+            <Grid item xs={mobile ? 6 : 3}>
               <Chip
                 icon={<img alt={platform.name} src={getIcon[platform.name]} />}
                 key={platform.id}
