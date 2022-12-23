@@ -10,6 +10,7 @@ import {
 import { Menu } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { useTheme } from '@emotion/react';
+import { Link } from 'react-router-dom';
 
 function Header() {
   const theme = useTheme();
@@ -22,7 +23,9 @@ function Header() {
 
   return (
     <AppBar position='relative'>
-      <Toolbar disableGutters={ mobile ? true : false } sx={{ justifyContent: 'space-around', gap: mobile ? 5 : 45 }}>
+      <Toolbar
+        disableGutters={mobile ? true : false}
+        sx={{ justifyContent: 'space-around', gap: mobile ? 5 : 45 }}>
         <IconButton sx={{ color: '#f6f6f6', display: mobile ? '' : 'none' }}>
           <Menu fontSize='large' />
         </IconButton>
@@ -33,11 +36,11 @@ function Header() {
           <ToggleButton value={'faq'}>FAQ</ToggleButton>
         </ToggleButtonGroup>
 
-        <IconButton>
-          <Avatar>
-            A
-          </Avatar>
-        </IconButton>
+        <Link to='/profile'>
+          <IconButton>
+            <Avatar>A</Avatar>
+          </IconButton>
+        </Link>
       </Toolbar>
     </AppBar>
   );
