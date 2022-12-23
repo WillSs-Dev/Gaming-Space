@@ -10,6 +10,6 @@ root.render(
   <BrowserRouter>
     <ThemeProvider theme={theme} >
       <App />
-    </ThemeProvider>,
+    </ThemeProvider>
   </BrowserRouter>
 );
