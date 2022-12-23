@@ -3,3 +3,8 @@ html body {
   padding: 0;
   color: #f6f6f6;
 }
+
+a {
+  text-decoration: underline;
+  color: inherit;
+}
