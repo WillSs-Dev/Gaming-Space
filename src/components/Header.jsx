@@ -31,7 +31,9 @@ function Header() {
         </IconButton>
 
         <ToggleButtonGroup exclusive value={view} onChange={handleChange}>
-          <ToggleButton value={'store'}>Store</ToggleButton>
+          <ToggleButton value={'store'}>
+            <Link to='/'>Store</Link>
+          </ToggleButton>
           <ToggleButton value={'library'}>My games</ToggleButton>
           <ToggleButton value={'faq'}>FAQ</ToggleButton>
         </ToggleButtonGroup>
