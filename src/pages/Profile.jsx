@@ -27,7 +27,7 @@ function Profile() {
         sx={{ fontFamily: 'Righteous' }}>
         Your Reviews:
       </Typography>
-      <ReviewsList reviews={ userReviews }/>
+      <ReviewsList mobile={ mobile } reviews={ userReviews }/>
       <Footer />
     </>
   );
