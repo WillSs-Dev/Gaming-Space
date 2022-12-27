@@ -12,7 +12,7 @@ import React from 'react';
 function ProfileInfo() {
   const { palette } = useTheme();
   const {
-    background: { paper }
+    background: { paper },
   } = palette;
   return (
     <Paper>
