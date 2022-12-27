@@ -1,17 +1,8 @@
 import React from 'react';
 import { GameCard } from './';
-import {
-  Grid,
-  Box,
-  useTheme,
-  useMediaQuery,
-} from '@mui/material';
+import { Grid, Box } from '@mui/material';
 
-function GamesList({ games }) {
-  
-  const theme = useTheme();
-  const mobile = useMediaQuery(theme.breakpoints.down('md'));
-
+function GamesList({ games, mobile }) {
   return (
     <Box mt={3} pb={4}>
       <Grid
@@ -19,11 +10,10 @@ function GamesList({ games }) {
         direction='row'
         justifyContent='center'
         alignItems='center'
-        spacing={2}
-      >
+        spacing={2}>
         {games.map((game) => (
           <Grid item>
-            <GameCard mobile={mobile} game={game}/>
+            <GameCard mobile={mobile} game={game} />
           </Grid>
         ))}
       </Grid>
