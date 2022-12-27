@@ -1,5 +1,4 @@
 import React from 'react';
-import { thirtyGames } from '../api/mock-responses';
 import { GameCard } from './';
 import {
   Grid,
@@ -8,8 +7,8 @@ import {
   useMediaQuery,
 } from '@mui/material';
 
-function GamesList() {
-  const { results } = thirtyGames;
+function GamesList({ games }) {
+  
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -22,7 +21,7 @@ function GamesList() {
         alignItems='center'
         spacing={2}
       >
-        {results.map((game) => (
+        {games.map((game) => (
           <Grid item>
             <GameCard mobile={mobile} game={game}/>
           </Grid>
