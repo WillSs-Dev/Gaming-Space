@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 
-function ProfileInfo() {
+function ProfileInfo({ mobile }) {
   const { palette } = useTheme();
   const {
     background: { paper },
@@ -38,7 +38,7 @@ function ProfileInfo() {
             sx={{
               transform: 'translate(0, -40%)',
               p: 1,
-              ml: 1,
+              ml: mobile ? 2 : 15,
             }}>
             <Avatar
               src='https://play-lh.googleusercontent.com/coMv1dl31PCfEs6essJoEUwVryaqKHKQvENdZ_WYpN-PXa8Qfitkg3grQxIVN22W5A'
@@ -68,7 +68,7 @@ function ProfileInfo() {
           </Paper>
         </Paper>
         {/* {EDIT} */}
-        <Paper sx={{ mr: 1.5, py: 2, display: 'flex', alignItems: 'center' }}>
+        <Paper sx={{ mr: mobile ? 2.5 : 15, py: 2, display: 'flex', alignItems: 'center' }}>
           <IconButton sx={{ gap: 1 }}>
             <Typography variant='subtitle1'>Edit profile</Typography>
             <Edit />

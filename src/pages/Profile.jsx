@@ -11,7 +11,7 @@ function Profile() {
   return (
     <>
       <Header />
-      <ProfileInfo />
+      <ProfileInfo mobile={ mobile } />
       <Typography
         variant='h4'
         mt={3}
