@@ -34,7 +34,9 @@ function Header() {
           <ToggleButton value={'store'}>
             <Link to='/'>Store</Link>
           </ToggleButton>
-          <ToggleButton value={'library'}>My games</ToggleButton>
+          <ToggleButton value={'library'}>
+            <Link to='/library'>My games</Link>
+          </ToggleButton>
           <ToggleButton value={'faq'}>FAQ</ToggleButton>
         </ToggleButtonGroup>
 
