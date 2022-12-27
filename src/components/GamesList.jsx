@@ -12,7 +12,7 @@ function GamesList({ games, mobile }) {
         alignItems='center'
         spacing={2}>
         {games.map((game) => (
-          <Grid item>
+          <Grid item key={game.id}>
             <GameCard mobile={mobile} game={game} />
           </Grid>
         ))}
