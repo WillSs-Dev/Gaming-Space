@@ -73,12 +73,8 @@ function Slider() {
                   </Typography>
                   <Grid container>
                     {game.genres.map((genre) => (
-                      <Grid item>
-                        <Chip
-                          key={genre.id}
-                          label={genre.name}
-                          sx={{ pl: 0.5, m: 0.5 }}
-                        />
+                      <Grid item key={genre.id}>
+                        <Chip label={genre.name} sx={{ pl: 0.5, m: 0.5 }} />
                       </Grid>
                     ))}
                   </Grid>
@@ -90,9 +86,8 @@ function Slider() {
                   </Typography>
                   <Grid container spacing={1}>
                     {game.parent_platforms.map(({ platform }) => (
-                      <Grid item>
+                      <Grid item key={platform.id}>
                         <Chip
-                          key={platform.id}
                           label={platform.name}
                           icon={
                             <img
