@@ -3,6 +3,7 @@ import { Header, ProfileInfo, Footer, ReviewsList, GamesList } from '../componen
 import { fiveGames } from '../api/mock-responses';
 import { Typography } from '@mui/material';
 import { useMediaQuery, useTheme } from '@mui/material';
+import { userReviews } from '../utils/mock-reviews.js';
 
 function Profile() {
   const { results: gamesInLibrary } = fiveGames;
@@ -15,17 +16,18 @@ function Profile() {
       <Typography
         variant='h4'
         mt={3}
-        sx={{ textAlign: 'center', fontFamily: 'Righteous' }}>
+        align='center'
+        sx={{ fontFamily: 'Righteous' }}>
         Games in Library:
       </Typography>
       <GamesList games={gamesInLibrary} />
       <Typography
         variant='h4'
-        mt={3}
-        sx={{ textAlign: 'center', fontFamily: 'Righteous' }}>
+        align='center'
+        sx={{ fontFamily: 'Righteous' }}>
         Your Reviews:
       </Typography>
-      <ReviewsList />
+      <ReviewsList reviews={ userReviews }/>
       <Footer />
     </>
   );
