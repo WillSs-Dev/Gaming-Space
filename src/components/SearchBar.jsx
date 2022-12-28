@@ -21,7 +21,6 @@ function SearchBar({ viewSlider }) {
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const setCategory = (category) => {
-    console.log(category);
     setSelectedCategory(category);
   };
 
@@ -60,7 +59,6 @@ function SearchBar({ viewSlider }) {
               </Select>
             </FormControl>
           </Button>
-          <Button onClick={() => viewSlider(false)}>News</Button>
         </ButtonGroup>
         <FormControl>
           <InputLabel htmlFor='outlined-adornment-search'>Search</InputLabel>
