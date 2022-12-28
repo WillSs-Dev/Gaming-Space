@@ -10,13 +10,13 @@ import {
 import { Menu } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { useTheme } from '@emotion/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Header() {
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const [view, setView] = useState('store');
-
+  const navigate = useNavigate();
   const handleChange = ({ target }) => {
     setView(target.value);
   };
@@ -31,13 +31,15 @@ function Header() {
         </IconButton>
 
         <ToggleButtonGroup exclusive value={view} onChange={handleChange}>
-          <ToggleButton value={'store'}>
-            <Link to='/'>Store</Link>
+          <ToggleButton value={'store'} onClick={() => navigate('/')}>
+            Store
           </ToggleButton>
-          <ToggleButton value={'library'}>
-            <Link to='/library'>My games</Link>
+          <ToggleButton value={'library'} onClick={() => navigate('/library')}>
+            My Games
           </ToggleButton>
-          <ToggleButton value={'faq'}>FAQ</ToggleButton>
+          <ToggleButton value={'faq'} onClick={() => navigate('/faq')}>
+            FAQ
+          </ToggleButton>
         </ToggleButtonGroup>
 
         <Link to='/profile'>
