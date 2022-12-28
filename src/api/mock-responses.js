@@ -20853,4 +20853,11 @@ const thirtyGames = {
   nofollow_collections: ['stores'],
 };
 
-export { gtaV, fiveGames, thirtyGames, userGames };
+const categories = [
+  { id: 1, name: 'Action' },
+  { id: 2, name: 'Indie' },
+  { id: 3, name: 'Adventure' },
+  { id: 4, name: 'RPG' },
+];
+
+export { gtaV, fiveGames, thirtyGames, categories, userGames };

@@ -14,13 +14,7 @@ import { Search } from '@mui/icons-material';
 import { Container } from '@mui/system';
 import { useTheme, MenuItem } from '@mui/material';
 import { useState } from 'react';
-
-const categories = [
-  { id: 1, name: 'Action' },
-  { id: 2, name: 'Indie' },
-  { id: 3, name: 'Adventure' },
-  { id: 4, name: 'RPG' },
-];
+import { categories } from '../api/mock-responses';
 
 function SearchBar({ viewSlider }) {
   const { palette } = useTheme();
