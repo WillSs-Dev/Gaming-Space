@@ -1,13 +1,20 @@
 import { Header, SearchBar, Hero, GamesList, Footer } from '../components/';
-import { thirtyGames } from '../api/mock-responses';
-import React, { useState } from 'react';
+// import { thirtyGames as games } from '../api/mock-responses';
+import React, { useEffect, useState } from 'react';
 import { Paper, useMediaQuery, useTheme } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestNewGames, selectGamesInCatalog } from '../redux/reducers/catalogSlice';
 
 export default function Home() {
   const [showSlider, setShowSlider] = useState(true);
-  const { results } = thirtyGames;
+  const { catalog: { games } } = useSelector(selectGamesInCatalog);
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(requestNewGames(1));
+  }, []);
   return (
     <Paper
       sx={{
@@ -17,7 +24,7 @@ export default function Home() {
       <Header />
       <SearchBar viewSlider={setShowSlider} />
       <Hero showSlider={showSlider} />
-      <GamesList games={results} mobile={mobile} />
+      { games.length ? <GamesList games={games} mobile={mobile} /> : '' }
       <Footer />
     </Paper>
   );
