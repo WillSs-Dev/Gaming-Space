@@ -12,7 +12,7 @@ const apiKey = process.env.REACT_APP_GAMES_API_PERSONAL_KEY;
 
 const getNewPage = (navNumber) =>
   fetch(
-    `${baseUrl}/games?key=${apiKey}&page=${navNumber}&page_size=39`,
+    `${baseUrl}/games?key=${apiKey}&page=${navNumber}&page_size=15`,
     options
   )
     .then((response) => response.json())
