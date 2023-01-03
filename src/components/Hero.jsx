@@ -4,7 +4,7 @@ import { Slider } from './';
 
 function Hero({ showSlider }) {
   return (
-    <Container sx={{ py: 1 }}>
+    <Container sx={{ py: 1, mb: 1.5 }}>
       <Typography
         variant='h4'
         align='center'
