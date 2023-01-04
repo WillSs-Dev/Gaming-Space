@@ -8,29 +8,25 @@ import {
   Avatar,
 } from '@mui/material';
 import { Menu } from '@mui/icons-material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from '@emotion/react';
-import { Link, useNavigate } from 'react-router-dom';
-import { selectCurrentPage, setPage } from '../redux/reducers/pageSlice';
-import { useSelector, useDispatch } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 function Header() {
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
-
+  const location = useLocation();
   const avatar = JSON.parse(localStorage.getItem('images'));
 
-  const dispatch = useDispatch();
-  const page = useSelector(selectCurrentPage);
+  const { pathname } = location;
 
-  const handleChange = ({ target }) => {
-    dispatch(setPage(target.value));
-  };
+  const [page, setPage] = useState('');
 
-  const resetHeader = () => {
-    dispatch(setPage(''));
-  };
+  useEffect(() => {
+    const page = pathname.split('/')[1];
+    pathname === '/' ? setPage('store') : setPage(page);
+  }, [pathname]);
 
   return (
     <AppBar position='relative'>
@@ -41,7 +37,7 @@ function Header() {
           <Menu fontSize='large' />
         </IconButton>
 
-        <ToggleButtonGroup exclusive value={page} onChange={handleChange}>
+        <ToggleButtonGroup exclusive value={page}>
           <ToggleButton value={'store'} onClick={() => navigate('/')}>
             Store
           </ToggleButton>
@@ -54,7 +50,7 @@ function Header() {
         </ToggleButtonGroup>
 
         <Link to='/profile'>
-          <IconButton onClick={resetHeader}>
+          <IconButton>
             <Avatar src={avatar ? avatar.profile : null}>A</Avatar>
           </IconButton>
         </Link>
