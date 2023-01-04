@@ -19,7 +19,7 @@ export default function Home() {
   const [pagination, setPagination] = useState(1);
 
   const {
-    catalog: { games },
+    games
   } = useSelector(selectGamesInCatalog);
 
   const theme = useTheme();

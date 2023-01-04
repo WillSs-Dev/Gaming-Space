@@ -24,7 +24,7 @@ const requestNewGames = (navNumber) => async (dispatch) => {
   }
 };
 
-const selectGamesInCatalog = (state) => state;
+const selectGamesInCatalog = ({catalog}) => catalog;
 
 export { storeRequestedGames, catalogSlice, requestNewGames, selectGamesInCatalog };
 
