@@ -27,7 +27,8 @@ function EditProfile({ setEditOpen, mobile }) {
     if (!profilePic && !backgroundPic) {
       return setShowAlert(true);
     }
-    const images = { profile: profilePic, background: backgroundPic };
+    const storedImages = JSON.parse(localStorage.getItem('images'));
+    const images = { profile: profilePic ? profilePic : storedImages.profile, background: backgroundPic ? backgroundPic : storedImages.background };
     localStorage.setItem('images', JSON.stringify(images));
     window.location.reload();
   };
