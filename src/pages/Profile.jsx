@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Header,
   ProfileInfo,
@@ -10,11 +10,23 @@ import { fiveGames } from '../api/mock-responses';
 import { Paper, Typography } from '@mui/material';
 import { useMediaQuery, useTheme } from '@mui/material';
 import { userReviews } from '../utils/mock-reviews.js';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
   const { results: gamesInLibrary } = fiveGames;
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userIsLogged = JSON.parse(localStorage.getItem('login'));
+
+    if (!userIsLogged) {
+      return navigate('/login');
+    }
+
+  }, [navigate]);
+
   return (
     <Paper
       sx={{

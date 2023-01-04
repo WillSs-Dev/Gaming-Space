@@ -12,15 +12,26 @@ import {
   MenuItem,
 } from '@mui/material';
 import { userGames } from '../api/mock-responses';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header, Footer, GamesList } from '../components';
 import { categories } from '../api/mock-responses';
+import { useNavigate } from 'react-router-dom';
 
 function Library() {
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
   const [view, setView] = useState('All');
   const [selectedCategory, setSelectedCategory] = useState('');
+
+  useEffect(() => {
+    const userIsLogged = JSON.parse(localStorage.getItem('login'));
+
+    if (!userIsLogged) {
+      return navigate('/login');
+    }
+
+  }, [navigate]);
 
   const setCategory = (category) => {
     setSelectedCategory(category);
