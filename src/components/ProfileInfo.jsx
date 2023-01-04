@@ -104,7 +104,7 @@ function ProfileInfo({ mobile }) {
             <Edit />
           </IconButton>
           <Dialog open={editOpen}>
-            <EditProfile setEditOpen={setEditOpen} />
+            <EditProfile setEditOpen={setEditOpen} mobile={mobile} />
           </Dialog>
         </Paper>
       </Paper>

@@ -1,4 +1,4 @@
-import { ArrowBack, Cancel, Save } from '@mui/icons-material';
+import { ArrowBack, Cancel, FmdBad, Save } from '@mui/icons-material';
 import {
   Button,
   Dialog,
@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 
-function EditProfile({ setEditOpen }) {
+function EditProfile({ setEditOpen, mobile }) {
   const [profilePic, setProfilePic] = useState('');
   const [backgroundPic, setBackgroundPic] = useState('');
   const [showAlert, setShowAlert] = useState(false);
@@ -35,12 +35,20 @@ function EditProfile({ setEditOpen }) {
   const resetImages = () => {
     localStorage.removeItem('images');
     window.location.reload();
-  }
+  };
 
   return (
     <Paper sx={{ p: 2 }}>
-      <Dialog open={showAlert} onClick={() => setShowAlert(false)}>
-        One or more informations missing
+      <Dialog
+        open={showAlert}
+        onClick={() => setShowAlert(false)}
+        sx={{ position: 'absolute', top: mobile ? 360 : 320 }}>
+        <Typography
+          variant='h4'
+          position='relative'
+          sx={{ fontFamily: 'Righteous', overflow: 'hidden' }}>
+          One or more fields missing!
+        </Typography>
       </Dialog>
       <Typography variant='h4' mb={2}>
         Edit your profile information:
