@@ -24,7 +24,7 @@ function EditProfile({ setEditOpen, mobile }) {
   };
 
   const handleForm = () => {
-    if (!profilePic || !backgroundPic) {
+    if (!profilePic && !backgroundPic) {
       return setShowAlert(true);
     }
     const images = { profile: profilePic, background: backgroundPic };
@@ -47,7 +47,7 @@ function EditProfile({ setEditOpen, mobile }) {
           variant='h4'
           position='relative'
           sx={{ fontFamily: 'Righteous', overflow: 'hidden' }}>
-          One or more fields missing!
+          You have to edit at least one field to save!
         </Typography>
       </Dialog>
       <Typography variant='h4' mb={2}>
