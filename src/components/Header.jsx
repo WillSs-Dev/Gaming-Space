@@ -19,7 +19,7 @@ function Header() {
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
 
-  const avatar = JSON.parse(localStorage.getItem('images')).profile;
+  const avatar = JSON.parse(localStorage.getItem('images'));
 
   const dispatch = useDispatch();
   const page = useSelector(selectCurrentPage);
@@ -55,7 +55,7 @@ function Header() {
 
         <Link to='/profile'>
           <IconButton onClick={resetHeader}>
-            <Avatar src={avatar}>A</Avatar>
+            <Avatar src={avatar ? avatar.profile : null}>A</Avatar>
           </IconButton>
         </Link>
       </Toolbar>
