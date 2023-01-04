@@ -1,5 +1,4 @@
 import { Header, SearchBar, Hero, GamesList, Footer } from '../components/';
-// import { thirtyGames as games } from '../api/mock-responses';
 import React, { useEffect, useState } from 'react';
 import {
   CircularProgress,
