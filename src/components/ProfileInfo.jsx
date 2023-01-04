@@ -19,8 +19,8 @@ function ProfileInfo({ mobile }) {
     background: { paper },
   } = palette;
 
+  const storedImages = localStorage.getItem('images');
   useEffect(() => {
-    const storedImages = localStorage.getItem('images');
     if (!storedImages) {
       const defaultImages = {
         profile:
@@ -32,7 +32,7 @@ function ProfileInfo({ mobile }) {
       setImages(defaultImages);
     }
     setImages(JSON.parse(storedImages));
-  }, []);
+  }, [storedImages]);
 
   const openBackdrop = () => {
     setEditOpen(true);

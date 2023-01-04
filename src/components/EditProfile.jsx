@@ -1,4 +1,4 @@
-import { Cancel, Save } from '@mui/icons-material';
+import { ArrowBack, Cancel, Save } from '@mui/icons-material';
 import {
   Button,
   Dialog,
@@ -31,6 +31,11 @@ function EditProfile({ setEditOpen }) {
     localStorage.setItem('images', JSON.stringify(images));
     window.location.reload();
   };
+
+  const resetImages = () => {
+    localStorage.removeItem('images');
+    window.location.reload();
+  }
 
   return (
     <Paper sx={{ p: 2 }}>
@@ -65,6 +70,9 @@ function EditProfile({ setEditOpen }) {
         </FormControl>
       </Paper>
       <Paper sx={{ display: 'flex', mt: 2, justifyContent: 'space-evenly' }}>
+        <Button variant='contained' color='secondary' onClick={resetImages}>
+          Default <ArrowBack sx={{ ml: 1 }} />
+        </Button>
         <Button
           variant='contained'
           onClick={() => setEditOpen(false)}
