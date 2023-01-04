@@ -12,22 +12,28 @@ import {
   requestNewGames,
   selectGamesInCatalog,
 } from '../redux/reducers/catalogSlice';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
   const [showSlider, setShowSlider] = useState(true);
   const [pagination, setPagination] = useState(1);
+  const navigate = useNavigate();
 
-  const {
-    games
-  } = useSelector(selectGamesInCatalog);
+  const { games } = useSelector(selectGamesInCatalog);
 
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const userIsLogged = JSON.parse(localStorage.getItem('login'));
+
+    if (!userIsLogged) {
+      return navigate('/login');
+    }
+
     dispatch(requestNewGames(pagination));
-  }, [pagination, dispatch]);
+  }, [pagination, dispatch, navigate]);
 
   return (
     <Paper
