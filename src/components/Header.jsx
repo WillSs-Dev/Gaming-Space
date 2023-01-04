@@ -8,17 +8,21 @@ import {
   Avatar,
 } from '@mui/material';
 import { Menu } from '@mui/icons-material';
-import React, { useState } from 'react';
+import React from 'react';
 import { useTheme } from '@emotion/react';
 import { Link, useNavigate } from 'react-router-dom';
+import { selectCurrentPage, setPage } from '../redux/reducers/pageSlice'; 
+import { useSelector, useDispatch } from 'react-redux';
 
 function Header() {
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
-  const [view, setView] = useState('store');
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const page = useSelector(selectCurrentPage);
   const handleChange = ({ target }) => {
-    setView(target.value);
+    dispatch(setPage(target.value));
   };
 
   return (
@@ -30,7 +34,7 @@ function Header() {
           <Menu fontSize='large' />
         </IconButton>
 
-        <ToggleButtonGroup exclusive value={view} onChange={handleChange}>
+        <ToggleButtonGroup exclusive value={page} onChange={handleChange}>
           <ToggleButton value={'store'} onClick={() => navigate('/')}>
             Store
           </ToggleButton>
