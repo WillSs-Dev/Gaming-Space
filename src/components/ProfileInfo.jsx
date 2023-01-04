@@ -2,15 +2,18 @@ import { Edit } from '@mui/icons-material';
 import {
   Avatar,
   Button,
+  Dialog,
   IconButton,
   Paper,
   Typography,
   useTheme,
 } from '@mui/material';
 import React, { useState, useEffect } from 'react';
+import { EditProfile } from './';
 
 function ProfileInfo({ mobile }) {
   const [images, setImages] = useState();
+  const [editOpen, setEditOpen] = useState(false);
   const { palette } = useTheme();
   const {
     background: { paper },
@@ -30,6 +33,10 @@ function ProfileInfo({ mobile }) {
     }
     setImages(JSON.parse(storedImages));
   }, []);
+
+  const openBackdrop = () => {
+    setEditOpen(true);
+  };
 
   return (
     <Paper>
@@ -92,10 +99,13 @@ function ProfileInfo({ mobile }) {
             display: 'flex',
             alignItems: 'center',
           }}>
-          <IconButton sx={{ gap: 1 }}>
+          <IconButton sx={{ gap: 1 }} onClick={openBackdrop}>
             <Typography variant='subtitle1'>Edit profile</Typography>
             <Edit />
           </IconButton>
+          <Dialog open={editOpen}>
+            <EditProfile />
+          </Dialog>
         </Paper>
       </Paper>
     </Paper>
