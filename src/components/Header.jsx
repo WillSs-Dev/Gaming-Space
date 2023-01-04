@@ -11,7 +11,7 @@ import { Menu } from '@mui/icons-material';
 import React from 'react';
 import { useTheme } from '@emotion/react';
 import { Link, useNavigate } from 'react-router-dom';
-import { selectCurrentPage, setPage } from '../redux/reducers/pageSlice'; 
+import { selectCurrentPage, setPage } from '../redux/reducers/pageSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Header() {
@@ -21,8 +21,13 @@ function Header() {
 
   const dispatch = useDispatch();
   const page = useSelector(selectCurrentPage);
+
   const handleChange = ({ target }) => {
     dispatch(setPage(target.value));
+  };
+
+  const resetHeader = () => {
+    dispatch(setPage(''));
   };
 
   return (
@@ -47,7 +52,7 @@ function Header() {
         </ToggleButtonGroup>
 
         <Link to='/profile'>
-          <IconButton>
+          <IconButton onClick={resetHeader}>
             <Avatar>A</Avatar>
           </IconButton>
         </Link>
