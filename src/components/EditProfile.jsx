@@ -25,7 +25,7 @@ function EditProfile({ setEditOpen }) {
 
   const handleForm = () => {
     if (!profilePic || !backgroundPic) {
-      setShowAlert(true);
+      return setShowAlert(true);
     }
     const images = { profile: profilePic, background: backgroundPic };
     localStorage.setItem('images', JSON.stringify(images));
