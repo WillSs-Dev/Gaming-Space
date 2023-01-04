@@ -2,6 +2,7 @@ import { Header, SearchBar, Hero, GamesList, Footer } from '../components/';
 // import { thirtyGames as games } from '../api/mock-responses';
 import React, { useEffect, useState } from 'react';
 import {
+  CircularProgress,
   Pagination,
   Paper,
   useMediaQuery,
@@ -27,7 +28,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(requestNewGames(pagination));
-  }, [pagination]);
+  }, [pagination, dispatch]);
 
   return (
     <Paper
@@ -57,7 +58,11 @@ export default function Home() {
       ) : (
         ''
       )}
-      {games.length ? <GamesList games={games} mobile={mobile} /> : ''}
+      {games.length ? (
+        <GamesList games={games} mobile={mobile} />
+      ) : (
+        <CircularProgress sx={{ mb: 3 }} />
+      )}
       <Pagination
         count={99}
         page={pagination}
