@@ -18,6 +18,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { fiveGames } from '../api/mock-responses';
 import getIcon from '../utils/icons';
+import { Link } from 'react-router-dom';
 const { results } = fiveGames;
 
 function Slider() {
@@ -41,22 +42,26 @@ function Slider() {
                 px: 5,
                 justifyContent: 'space-evenly',
               }}>
-              <CardMedia
-                component='img'
-                sx={{
-                  maxWidth: mobile ? 800 : 600,
-                  maxHeight: 300,
-                  minHeight: 300,
-                  borderRadius: '15px',
-                }}
-                alt={game.name}
-                image={game.background_image}
-              />
+              <Link to={`games/${game.id}`}>
+                <CardMedia
+                  component='img'
+                  sx={{
+                    maxWidth: mobile ? 800 : 600,
+                    maxHeight: 300,
+                    minHeight: 300,
+                    borderRadius: '15px',
+                  }}
+                  alt={game.name}
+                  image={game.background_image}
+                />
+              </Link>
               <Box>
                 <CardContent sx={{ p: 2 }}>
-                  <Typography variant='h4' color={palette.text.primary}>
-                    {game.name}
-                  </Typography>
+                  <Link to={`games/${game.id}`}>
+                    <Typography variant='h4' color={palette.text.primary}>
+                      {game.name}
+                    </Typography>
+                  </Link>
                   <Typography variant='body1' color='palette.text.primary'>
                     Release date: {game.released}
                   </Typography>
