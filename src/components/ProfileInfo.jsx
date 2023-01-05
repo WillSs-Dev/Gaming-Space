@@ -14,12 +14,16 @@ import { EditProfile } from './';
 function ProfileInfo({ mobile }) {
   const [images, setImages] = useState();
   const [editOpen, setEditOpen] = useState(false);
+  const [username, setUsername] = useState('');
+  const [usertag, setUsertag] = useState('');
   const { palette } = useTheme();
+
   const {
     background: { paper },
   } = palette;
 
   const storedImages = localStorage.getItem('images');
+
   useEffect(() => {
     if (!storedImages) {
       const defaultImages = {
@@ -33,6 +37,13 @@ function ProfileInfo({ mobile }) {
     }
     setImages(JSON.parse(storedImages));
   }, [storedImages]);
+
+  const loginInfo = JSON.parse(localStorage.getItem('login'));
+
+  useEffect(() => {
+    setUsername(loginInfo.username);
+    setUsertag(loginInfo.usertag);
+  }, [loginInfo]);
 
   const openBackdrop = () => {
     setEditOpen(true);
@@ -85,9 +96,9 @@ function ProfileInfo({ mobile }) {
             </Paper>
           </Button>
           <Paper sx={{ py: 0.5, backgroundColor: 'transparent' }}>
-            <Typography variant='h5'>User</Typography>
+            <Typography variant='h5'>{username}</Typography>
             <Typography variant='subtitle2' mt={-0.5}>
-              @usertag
+              {usertag}
             </Typography>
           </Paper>
         </Paper>

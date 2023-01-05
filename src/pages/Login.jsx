@@ -36,7 +36,7 @@ function Login() {
       return setShowAlert(true);
     }
 
-    const loginInfo = JSON.stringify({ username, usertag: `th3${username}_g4meR` });
+    const loginInfo = JSON.stringify({ username, usertag: `@th3${username}_g4meR` });
     localStorage.setItem('login', loginInfo);
 
     navigate('/');
