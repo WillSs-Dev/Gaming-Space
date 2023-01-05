@@ -1,14 +1,15 @@
 import { Paper } from '@mui/material';
-import { Footer, Header } from '../components';
+import { Footer, Header, SearchBar } from '../components';
 import React from 'react';
 
-function GameDetail() {
+function GameDetailsPage() {
   return (
     <Paper>
       <Header />
+      <SearchBar />
       <Footer />
     </Paper>
   );
 }
 
-export default GameDetail;
+export default GameDetailsPage;
