@@ -45,7 +45,7 @@ function Library() {
     <Paper
       sx={{
         background:
-          'linear-gradient(-180deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 15%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 100%)',
+          'linear-gradient(-120deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 15%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 100%)',
       }}>
       <Header />
       <Typography
