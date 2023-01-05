@@ -39,8 +39,8 @@ function GameDetails({ game, mobile }) {
                   image={slide.image}
                   sx={{
                     maxWidth: mobile ? 800 : 700,
-                    maxHeight: 300,
-                    minHeight: 300,
+                    maxHeight: 350,
+                    minHeight: 350,
                     borderRadius: '15px',
                   }}
                 />
@@ -101,6 +101,18 @@ function GameDetails({ game, mobile }) {
         </Paper>
       </Paper>
       <hr style={{ width: '90vW' }} />
+      <Paper sx={{ p: 2, display: mobile ? 'block' : 'flex', ml: 2 }}>
+        <Paper sx={{ maxWidth: mobile ? '100vW' : '40vW' }}>
+          <Typography
+            variant='h4'
+            color='palette.text.primary'
+            fontFamily='Righteous'
+            sx={{ mt: 1 }}>
+            Description
+          </Typography>
+          <Paper dangerouslySetInnerHTML={{ __html: game.description }} />
+        </Paper>
+      </Paper>
     </>
   );
 }
