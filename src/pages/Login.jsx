@@ -36,7 +36,7 @@ function Login() {
       return setShowAlert(true);
     }
 
-    const loginInfo = JSON.stringify({ username, password });
+    const loginInfo = JSON.stringify({ username });
     localStorage.setItem('login', loginInfo);
 
     navigate('/');
