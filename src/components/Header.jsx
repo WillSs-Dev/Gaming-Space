@@ -25,7 +25,7 @@ function Header() {
 
   useEffect(() => {
     const page = pathname.split('/')[1];
-    pathname === '/' ? setPage('store') : setPage(page);
+    setPage(page);
   }, [pathname]);
 
   return (
@@ -38,7 +38,7 @@ function Header() {
         </IconButton>
 
         <ToggleButtonGroup exclusive value={page}>
-          <ToggleButton value={'store'} onClick={() => navigate('/')}>
+          <ToggleButton value={'store'} onClick={() => navigate('/store')}>
             Store
           </ToggleButton>
           <ToggleButton value={'library'} onClick={() => navigate('/library')}>
