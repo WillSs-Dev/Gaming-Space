@@ -14,7 +14,7 @@ function GameCard({ game, mobile }) {
   const [showInfo, setShowInfo] = useState(false);
 
   return (
-    <Link to={`game/${game.id}`}>
+    <Link to={`/games/${game.id}`}>
       <Card
         onMouseOver={() => setShowInfo(true)}
         onMouseLeave={() => setShowInfo(false)}>

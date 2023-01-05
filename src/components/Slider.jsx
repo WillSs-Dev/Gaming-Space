@@ -42,7 +42,7 @@ function Slider() {
                 px: 5,
                 justifyContent: 'space-evenly',
               }}>
-              <Link to={`games/${game.id}`}>
+              <Link to={`/games/${game.id}`}>
                 <CardMedia
                   component='img'
                   sx={{
@@ -57,7 +57,7 @@ function Slider() {
               </Link>
               <Box>
                 <CardContent sx={{ p: 2 }}>
-                  <Link to={`games/${game.id}`}>
+                  <Link to={`/games/${game.id}`}>
                     <Typography variant='h4' color={palette.text.primary}>
                       {game.name}
                     </Typography>
