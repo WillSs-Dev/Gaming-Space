@@ -18,7 +18,7 @@ function GameDetailsPage() {
 
   useEffect(() => {
     setGame(currentGame.game);
-  }, []);
+  }, [currentGame]);
 
   return (
     <Paper>
