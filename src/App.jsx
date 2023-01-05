@@ -4,6 +4,7 @@ import Profile from './pages/Profile';
 import Library from './pages/Library';
 import FAQ from './pages/FAQ';
 import Login from './pages/Login';
+import GameDetail from './pages/GameDetail';
 import { useTheme } from '@mui/material';
 import './App.css';
 
@@ -17,6 +18,7 @@ function App() {
         <Route exact path='/profile' element={<Profile />} />
         <Route exact path='/library' element={<Library />} />
         <Route exact path='/faq' element={<FAQ />} />
+        <Route exact path='/games/:id' element={<GameDetail />} />
       </Routes>
     </div>
   );
