@@ -18,4 +18,12 @@ const getNewPage = (navNumber) =>
     .then((response) => response.json())
     .catch((err) => err);
 
-export { getNewPage };
+const getGameById = (id) =>
+  fetch(
+    `${baseUrl}/games/${id}?key=${apiKey}`,
+    options
+  )
+    .then((response) => response.json())
+    .catch((err) => err);
+
+export { getNewPage, getGameById };
