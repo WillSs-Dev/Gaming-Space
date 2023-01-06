@@ -1,12 +1,8 @@
 const options = {
   method: 'GET',
-  headers: {
-    'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY,
-    'x-rapidapi-host': 'rawg-video-games-database.p.rapidapi.com',
-  },
 };
 
-const baseUrl = 'https://rawg-video-games-database.p.rapidapi.com';
+const baseUrl = 'https://api.rawg.io/api';
 
 const apiKey = process.env.REACT_APP_GAMES_API_PERSONAL_KEY;
 
@@ -19,11 +15,13 @@ const getNewPage = (navNumber) =>
     .catch((err) => err);
 
 const getGameById = (id) =>
-  fetch(
-    `${baseUrl}/games/${id}?key=${apiKey}`,
-    options
-  )
+  fetch(`${baseUrl}/games/${id}?key=${apiKey}`, options)
     .then((response) => response.json())
     .catch((err) => err);
 
-export { getNewPage, getGameById };
+const getGameScreenshots = (id) =>
+  fetch(`${baseUrl}/games/${id}/screenshots?key=${apiKey}`, options)
+    .then((response) => response.json())
+    .catch((err) => err);
+
+export { getNewPage, getGameById, getGameScreenshots };
