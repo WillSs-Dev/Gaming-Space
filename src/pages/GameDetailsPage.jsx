@@ -1,11 +1,9 @@
-import { Paper, useMediaQuery } from '@mui/material';
+import { CircularProgress, Paper, useMediaQuery } from '@mui/material';
 import { Footer, Header, SearchBar, GameDetails } from '../components';
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import { getGameById } from '../api';
-import { useSelector } from 'react-redux';
-import { selectCurrentGame } from '../redux/reducers/currentGameSlice';
+import { getGameById, getGameScreenshots } from '../api';
 
 function GameDetailsPage() {
   const [game, setGame] = useState();
@@ -14,22 +12,21 @@ function GameDetailsPage() {
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const { id } = useParams();
 
-  const currentGame = useSelector(selectCurrentGame);
-
   useEffect(() => {
     const storeGameWithFullInformations = async () => {
       const requestedGame = await getGameById(id);
-      const fullObj = { ...requestedGame, ...currentGame.game };
+      const { results } = await getGameScreenshots(requestedGame.slug);
+      const fullObj = { ...requestedGame, screenshots: results };
       setGame(fullObj);
     };
     storeGameWithFullInformations();
-  }, [currentGame, id]);
+  }, [id]);
 
   return (
     <Paper>
       <Header />
       <SearchBar />
-      {game ? <GameDetails game={game} mobile={mobile} /> : ''}
+      {game ? <GameDetails game={game} mobile={mobile} /> : <CircularProgress sx={{ mb: 3 }} />}
       <Footer />
     </Paper>
   );

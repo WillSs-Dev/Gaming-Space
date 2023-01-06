@@ -3,7 +3,6 @@ import {
   Card,
   CardMedia,
   Chip,
-  Divider,
   Grid,
   List,
   ListItem,
@@ -22,7 +21,7 @@ function GameDetails({ game, mobile }) {
   useEffect(() => {
     const requirements = game.platforms.find(
       ({ platform }) => platform.name === 'PC'
-    ).requirements_en;
+    ).requirements;
     setPcRequirements(requirements);
   }, [game]);
 
@@ -43,7 +42,7 @@ function GameDetails({ game, mobile }) {
           pagination
           style={{ maxWidth: mobile ? '70vW' : '50vW' }}
           loop>
-          {game.short_screenshots.map((slide, index) => (
+          {game.screenshots.map((slide, index) => (
             <SwiperSlide key={slide.id}>
               <Card>
                 <CardMedia

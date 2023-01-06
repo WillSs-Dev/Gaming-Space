@@ -7,21 +7,17 @@ import {
   Grid,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { storeCurrentGame } from '../redux/reducers/currentGameSlice';
 import getIcon from '../utils/icons';
 
 function GameCard({ game, mobile }) {
   const [showInfo, setShowInfo] = useState(false);
-  const dispatch = useDispatch();
 
   return (
     <Link to={`/games/${game.id}`}>
       <Card
         onMouseOver={() => setShowInfo(true)}
-        onMouseLeave={() => setShowInfo(false)}
-        onClick={() => dispatch(storeCurrentGame(game))}>
+        onMouseLeave={() => setShowInfo(false)}>
         <CardMedia
           alt={game.name}
           image={game.background_image}
