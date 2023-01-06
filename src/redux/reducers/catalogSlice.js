@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getNewPage } from '../../api';
+import { getNewPage, searchGames } from '../../api';
 
 const catalogSlice = createSlice({
   name: 'catalog',
@@ -24,8 +24,17 @@ const requestNewGames = (navNumber) => async (dispatch) => {
   }
 };
 
+const requestSearchedGames = (inputText) => async (dispatch) => {
+  try {
+    const { results } = await searchGames(inputText);
+    dispatch(storeRequestedGames(results));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 const selectGamesInCatalog = ({catalog}) => catalog;
 
-export { storeRequestedGames, catalogSlice, requestNewGames, selectGamesInCatalog };
+export { storeRequestedGames, catalogSlice, requestNewGames, selectGamesInCatalog, requestSearchedGames };
 
 export default catalogSlice.reducer;

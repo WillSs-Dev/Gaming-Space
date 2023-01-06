@@ -15,10 +15,31 @@ import { Container } from '@mui/system';
 import { useTheme, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { categories } from '../api/mock-responses';
+import { useDispatch } from 'react-redux';
+import { requestSearchedGames } from '../redux/reducers/catalogSlice';
 
 function SearchBar({ viewSlider }) {
-  const { palette } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [inputText, setInputText] = useState('');
+  const { palette } = useTheme();
+  const dispatch = useDispatch();
+
+  const handleText = ({ target: { value } }) => {
+    setInputText(value);
+  };
+
+  const enterSearch = ({ key }) => {
+    if (key === 'Enter') {
+      viewSlider(false);
+      setInputText('');
+      dispatch(requestSearchedGames(inputText));
+    }
+  };
+
+  const triggerSearch = () => {
+    viewSlider(false);
+    dispatch(requestSearchedGames(inputText));
+  };
 
   const setCategory = (category) => {
     setSelectedCategory(category);
@@ -65,9 +86,12 @@ function SearchBar({ viewSlider }) {
           <OutlinedInput
             type='text'
             id='outlined-adornment-search'
+            value={inputText}
+            onChange={handleText}
+            onKeyUp={enterSearch}
             endAdornment={
               <InputAdornment position='end'>
-                <IconButton onClick={() => viewSlider(false)}>
+                <IconButton onClick={triggerSearch}>
                   <Search />
                 </IconButton>
               </InputAdornment>

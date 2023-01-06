@@ -29,4 +29,18 @@ const getStoresById = (id) =>
     .then((response) => response.json())
     .catch((err) => err);
 
-export { getNewPage, getGameById, getGameScreenshots, getStoresById };
+const searchGames = (inputText) =>
+  fetch(
+    `${baseUrl}/games?key=${apiKey}&search=${inputText}`,
+    options
+  )
+    .then((response) => response.json())
+    .catch((err) => err);
+
+export {
+  getNewPage,
+  getGameById,
+  getGameScreenshots,
+  getStoresById,
+  searchGames,
+};
