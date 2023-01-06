@@ -1,5 +1,7 @@
+import { Add, Check, Favorite, FavoriteBorder } from '@mui/icons-material';
 import {
   Avatar,
+  Button,
   Card,
   CardMedia,
   Chip,
@@ -18,6 +20,16 @@ import CTA from './CTA';
 
 function GameDetails({ game, mobile }) {
   const [pcRequirements, setPcRequirements] = useState('');
+  const [gameInLibrary, setGameInLibrary] = useState(false);
+  const [gameFavorite, setGameFavorite] = useState(false);
+
+  const handleAddtoLibrary = () => {
+    setGameInLibrary(!gameInLibrary);
+  };
+
+  const handleFavorite = () => {
+    setGameFavorite(!gameFavorite);
+  };
 
   useEffect(() => {
     const requirements = game.platforms.find(
@@ -111,6 +123,14 @@ function GameDetails({ game, mobile }) {
               </Grid>
             ))}
           </Grid>
+          <Paper sx={{ display: 'flex', gap: 1 }}>
+            <Button variant='contained' sx={{ mt: 1 }} onClick={handleAddtoLibrary}>
+              Library { gameInLibrary ? <Check sx={{ mr: -1, ml: 1 }} /> : <Add sx={{ mr: -1, ml: 1 }} />}
+            </Button>
+            <Button variant='contained' color='error' sx={{ mt: 1 }} onClick={handleFavorite}>
+              Favorite { gameFavorite ? <Favorite sx={{ mr: -1, ml: 1 }} /> : <FavoriteBorder sx={{ mr: -1, ml: 1 }} />}
+            </Button>
+          </Paper>
         </Paper>
       </Paper>
       <CTA game={game} />
