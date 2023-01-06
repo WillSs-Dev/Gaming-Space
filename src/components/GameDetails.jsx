@@ -24,7 +24,6 @@ function GameDetails({ game, mobile }) {
       ({ platform }) => platform.name === 'PC'
     ).requirements_en;
     setPcRequirements(requirements);
-    console.log(requirements);
   }, [game]);
 
   return (
