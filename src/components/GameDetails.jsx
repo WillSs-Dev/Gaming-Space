@@ -3,16 +3,30 @@ import {
   Card,
   CardMedia,
   Chip,
+  Divider,
   Grid,
+  List,
+  ListItem,
+  ListItemText,
   Paper,
   Typography,
 } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import getIcon from '../utils/icons';
 
 function GameDetails({ game, mobile }) {
+  const [pcRequirements, setPcRequirements] = useState('');
+
+  useEffect(() => {
+    const requirements = game.platforms.find(
+      ({ platform }) => platform.name === 'PC'
+    ).requirements_en;
+    setPcRequirements(requirements);
+    console.log(requirements);
+  }, [game]);
+
   return (
     <>
       <Paper
@@ -101,16 +115,50 @@ function GameDetails({ game, mobile }) {
         </Paper>
       </Paper>
       <hr style={{ width: '90vW' }} />
-      <Paper sx={{ p: 2, display: mobile ? 'block' : 'flex', ml: 2 }}>
+      <Paper
+        sx={{ p: 2, display: mobile ? 'block' : 'flex', ml: mobile ? 2 : 6 }}>
         <Paper sx={{ maxWidth: mobile ? '100vW' : '40vW' }}>
           <Typography
-            variant='h4'
+            variant='h5'
             color='palette.text.primary'
             fontFamily='Righteous'
             sx={{ mt: 1 }}>
             Description
           </Typography>
           <Paper dangerouslySetInnerHTML={{ __html: game.description }} />
+        </Paper>
+        <Paper sx={{ ml: mobile ? 0 : 6 }}>
+          <Typography
+            variant='h5'
+            color='palette.text.primary'
+            fontFamily='Righteous'
+            sx={{ mt: 1 }}>
+            Platforms
+          </Typography>
+          <List sx={{ ml: -1.5, maxWidth: 'fit-content' }}>
+            {game.platforms.map(({ platform }) => (
+              <ListItem key={platform.id}>
+                <ListItemText>{platform.name}</ListItemText>
+              </ListItem>
+            ))}
+          </List>
+        </Paper>
+        <Paper sx={{ ml: mobile ? 0 : 6, maxWidth: mobile ? '90vW' : '30vW' }}>
+          <Typography
+            variant='h5'
+            color='palette.text.primary'
+            fontFamily='Righteous'
+            sx={{ mt: 1 }}>
+            PC Requirements
+          </Typography>
+          <Paper
+            sx={{ mt: 2 }}
+            dangerouslySetInnerHTML={{ __html: pcRequirements.minimum }}
+          />
+          <Paper
+            sx={{ mt: 2 }}
+            dangerouslySetInnerHTML={{ __html: pcRequirements.recommended }}
+          />
         </Paper>
       </Paper>
     </>
