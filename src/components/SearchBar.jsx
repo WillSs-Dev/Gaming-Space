@@ -18,7 +18,7 @@ import { categories } from '../api/mock-responses';
 import { useDispatch } from 'react-redux';
 import { requestSearchedGames } from '../redux/reducers/catalogSlice';
 
-function SearchBar({ viewSlider }) {
+function SearchBar({ viewSlider, viewPagination }) {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [inputText, setInputText] = useState('');
   const { palette } = useTheme();
@@ -32,12 +32,14 @@ function SearchBar({ viewSlider }) {
     if (key === 'Enter') {
       viewSlider(false);
       setInputText('');
+      viewPagination(false);
       dispatch(requestSearchedGames(inputText));
     }
   };
 
   const triggerSearch = () => {
     viewSlider(false);
+    viewPagination(false);
     dispatch(requestSearchedGames(inputText));
   };
 

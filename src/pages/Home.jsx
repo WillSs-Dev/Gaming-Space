@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Home() {
   const [showSlider, setShowSlider] = useState(true);
   const [pagination, setPagination] = useState(1);
+  const [showPagination, setShowPagination] = useState(true);
   const navigate = useNavigate();
 
   const { games } = useSelector(selectGamesInCatalog);
@@ -45,9 +46,9 @@ export default function Home() {
         alignItems: 'center',
       }}>
       <Header />
-      <SearchBar viewSlider={setShowSlider} />
+      <SearchBar viewSlider={setShowSlider} viewPagination={setShowPagination}/>
       <Hero showSlider={showSlider} />
-      {games.length ? (
+      {games.length && showPagination ? (
         <Pagination
           count={99}
           page={pagination}
@@ -69,7 +70,7 @@ export default function Home() {
       ) : (
         <CircularProgress sx={{ mb: 3 }} />
       )}
-      <Pagination
+      {showPagination ? <Pagination
         count={99}
         page={pagination}
         siblingCount={1}
@@ -81,7 +82,7 @@ export default function Home() {
           setPagination(Number(target.innerText));
           setShowSlider(false);
         }}
-      />
+      /> : ''}
       <Footer />
     </Paper>
   );
