@@ -14,6 +14,7 @@ import React, { useEffect, useState } from 'react';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import getIcon from '../utils/icons';
+import CTA from './CTA';
 
 function GameDetails({ game, mobile }) {
   const [pcRequirements, setPcRequirements] = useState('');
@@ -112,6 +113,7 @@ function GameDetails({ game, mobile }) {
           </Grid>
         </Paper>
       </Paper>
+      <CTA game={game} />
       <hr style={{ width: '90vW' }} />
       <Paper
         sx={{ p: 2, display: mobile ? 'block' : 'flex', ml: mobile ? 2 : 6 }}>

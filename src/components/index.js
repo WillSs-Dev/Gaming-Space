@@ -9,3 +9,4 @@ export { default as ProfileInfo } from './ProfileInfo';
 export { default as ReviewsList } from './ReviewsList';
 export { default as EditProfile } from './EditProfile';
 export { default as GameDetails } from './GameDetails';
+export { default as CTA } from './CTA';

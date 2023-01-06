@@ -24,4 +24,9 @@ const getGameScreenshots = (id) =>
     .then((response) => response.json())
     .catch((err) => err);
 
-export { getNewPage, getGameById, getGameScreenshots };
+const getStoresById = (id) =>
+  fetch(`${baseUrl}/games/${id}/stores?key=${apiKey}`, options)
+    .then((response) => response.json())
+    .catch((err) => err);
+
+export { getNewPage, getGameById, getGameScreenshots, getStoresById };
