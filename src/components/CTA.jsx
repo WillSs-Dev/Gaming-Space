@@ -14,12 +14,16 @@ function CTA({ game }) {
   }, [game]);
 
   return (
-    <Paper sx={{ mx: 8, textAlign: 'center', gap: 2}}>
+    <Paper sx={{ mx: 8, textAlign: 'center', gap: 2 }}>
       <Typography variant='h5'>Play in:</Typography>
       <Grid container justifyContent='center'>
         {stores.map(({ id, url, store_id }) => (
           <Grid item key={id} m={1}>
-            <Button variant='outlined'><a href={url} target='__blank'>{translateStore[store_id]}</a></Button>
+            <Button variant='outlined'>
+              <a href={url} target='__blank'>
+                {translateStore[store_id]}
+              </a>
+            </Button>
           </Grid>
         ))}
       </Grid>
