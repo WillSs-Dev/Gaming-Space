@@ -58,6 +58,7 @@ export default function Home() {
           sx={{ backgroundColor: 'rgba(32,80,148,0.43)', borderRadius: 15 }}
           onChange={({ target }) => {
             setPagination(Number(target.innerText));
+            setShowSlider(false);
           }}
         />
       ) : (
@@ -78,6 +79,7 @@ export default function Home() {
         sx={{ mb: 3, backgroundColor: 'rgba(4,53,108,255)', borderRadius: 15 }}
         onChange={({ target }) => {
           setPagination(Number(target.innerText));
+          setShowSlider(false);
         }}
       />
       <Footer />

@@ -16,15 +16,24 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { fiveGames } from '../api/mock-responses';
 import getIcon from '../utils/icons';
 import { Link } from 'react-router-dom';
-const { results } = fiveGames;
+import { useSelector } from 'react-redux';
+import { selectGamesInCatalog } from '../redux/reducers/catalogSlice';
+import { useEffect, useState } from 'react';
 
 function Slider() {
+  const [slides, setSlides] = useState([]);
+
   const theme = useTheme();
   const { palette } = theme;
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
+  const { games } = useSelector(selectGamesInCatalog);
+
+  useEffect(() => {
+    const fiveGames = games.slice(0, 5)
+    setSlides(fiveGames);
+  }, [games]);
 
   return (
     <Paper sx={{ p: 3, m: 'auto', borderRadius: '15px' }}>
@@ -34,7 +43,7 @@ function Slider() {
         navigation={{ clickable: true }}
         pagination
         loop>
-        {results.map((game) => (
+        {slides.map((game) => (
           <SwiperSlide key={game.id}>
             <Card
               sx={{
