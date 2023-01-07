@@ -18,10 +18,10 @@ export default function Home() {
   const [showSlider, setShowSlider] = useState(true);
   const [pagination, setPagination] = useState(1);
   const [showPagination, setShowPagination] = useState(true);
-  const navigate = useNavigate();
 
   const { games } = useSelector(selectGamesInCatalog);
 
+  const navigate = useNavigate();
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const dispatch = useDispatch();
@@ -46,7 +46,10 @@ export default function Home() {
         alignItems: 'center',
       }}>
       <Header />
-      <SearchBar viewSlider={setShowSlider} viewPagination={setShowPagination}/>
+      <SearchBar
+        viewSlider={setShowSlider}
+        viewPagination={setShowPagination}
+      />
       <Hero showSlider={showSlider} />
       {games.length && showPagination ? (
         <Pagination
@@ -57,8 +60,8 @@ export default function Home() {
           size={'large'}
           shape='rounded'
           sx={{ backgroundColor: 'rgba(32,80,148,0.43)', borderRadius: 15 }}
-          onChange={({ target }) => {
-            setPagination(Number(target.innerText));
+          onChange={(__e, value) => {
+            setPagination(value);
             setShowSlider(false);
           }}
         />
@@ -70,19 +73,27 @@ export default function Home() {
       ) : (
         <CircularProgress sx={{ mb: 3 }} />
       )}
-      {showPagination ? <Pagination
-        count={99}
-        page={pagination}
-        siblingCount={1}
-        boundaryCount={1}
-        size={'large'}
-        shape='rounded'
-        sx={{ mb: 3, backgroundColor: 'rgba(4,53,108,255)', borderRadius: 15 }}
-        onChange={({ target }) => {
-          setPagination(Number(target.innerText));
-          setShowSlider(false);
-        }}
-      /> : ''}
+      {showPagination ? (
+        <Pagination
+          count={99}
+          page={pagination}
+          siblingCount={1}
+          boundaryCount={1}
+          size={'large'}
+          shape='rounded'
+          sx={{
+            mb: 3,
+            backgroundColor: 'rgba(4,53,108,255)',
+            borderRadius: 15,
+          }}
+          onChange={(__e, value) => {
+            setPagination(value);
+            setShowSlider(false);
+          }}
+        />
+      ) : (
+        ''
+      )}
       <Footer />
     </Paper>
   );
