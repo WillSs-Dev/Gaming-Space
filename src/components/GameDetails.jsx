@@ -13,8 +13,10 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { addGame, removeGame } from '../redux/reducers/libraryReducer';
 import getIcon from '../utils/icons';
 import CTA from './CTA';
 
@@ -22,9 +24,14 @@ function GameDetails({ game, mobile }) {
   const [pcRequirements, setPcRequirements] = useState('');
   const [gameInLibrary, setGameInLibrary] = useState(false);
   const [gameFavorite, setGameFavorite] = useState(false);
+  const dispatch = useDispatch();
 
   const handleAddtoLibrary = () => {
     setGameInLibrary(!gameInLibrary);
+    if (gameInLibrary) {
+      return dispatch(removeGame(game));
+    };
+    dispatch(addGame(game));
   };
 
   const handleFavorite = () => {
