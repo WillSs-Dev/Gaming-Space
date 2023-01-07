@@ -6,20 +6,20 @@ const librarySlice = createSlice({
     games: [],
   },
   reducers: {
-    addGame: (state, { payload }) => {
+    addGameToLibrary: (state, { payload }) => {
       state.games.push(payload);
     },
 
-    removeGame: (state, { payload }) => {
+    removeGameFromLibrary: (state, { payload }) => {
       state.games = state.games.filter((game) => game.id !== payload.id);
     },
   },
 });
 
-const { addGame, removeGame } = librarySlice.actions;
+const { addGameToLibrary, removeGameFromLibrary } = librarySlice.actions;
 
 const selectGamesInLibrary = ({ library }) => library;
 
-export { addGame, removeGame, librarySlice, selectGamesInLibrary };
+export { addGameToLibrary, removeGameFromLibrary, librarySlice, selectGamesInLibrary };
 
 export default librarySlice.reducer;

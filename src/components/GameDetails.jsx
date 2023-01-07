@@ -17,8 +17,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {
-  addGame,
-  removeGame,
+  addGameToFavorites,
+  removeGameFromFavorites,
+  selectFavoriteGames,
+} from '../redux/reducers/favoriteReducer';
+import {
+  addGameToLibrary,
+  removeGameFromLibrary,
   selectGamesInLibrary,
 } from '../redux/reducers/libraryReducer';
 import getIcon from '../utils/icons';
@@ -30,18 +35,23 @@ function GameDetails({ game, mobile }) {
   const [gameFavorite, setGameFavorite] = useState(false);
 
   const { games: gamesInLibrary } = useSelector(selectGamesInLibrary);
+  const { favoriteGames } = useSelector(selectFavoriteGames);
   const dispatch = useDispatch();
 
   const handleAddtoLibrary = () => {
     setGameInLibrary(!gameInLibrary);
     if (gameInLibrary) {
-      return dispatch(removeGame(game));
+      return dispatch(removeGameFromLibrary(game));
     }
-    dispatch(addGame(game));
+    dispatch(addGameToLibrary(game));
   };
 
   const handleFavorite = () => {
     setGameFavorite(!gameFavorite);
+    if (gameFavorite) {
+      return dispatch(removeGameFromFavorites);
+    }
+    dispatch(addGameToFavorites(game));
   };
 
   useEffect(() => {
@@ -55,6 +65,13 @@ function GameDetails({ game, mobile }) {
     );
     if (gameIsInLibrary) {
       setGameInLibrary(true);
+    }
+
+    const gameIsFavorite = favoriteGames.some(
+      (favoriteGame) => favoriteGame.id === game.id
+    );
+    if (gameIsFavorite) {
+      setGameFavorite(true);
     }
   }, [gamesInLibrary, game]);
 

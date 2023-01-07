@@ -17,6 +17,7 @@ import { categories } from '../api/mock-responses';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectGamesInLibrary } from '../redux/reducers/libraryReducer';
+import { selectFavoriteGames } from '../redux/reducers/favoriteReducer';
 
 function Library() {
   const [view, setView] = useState('All');
@@ -27,6 +28,7 @@ function Library() {
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
   const { games } = useSelector(selectGamesInLibrary);
+  const { favoriteGames } = useSelector(selectFavoriteGames);
 
   useEffect(() => {
     const userIsLogged = JSON.parse(localStorage.getItem('login'));
@@ -35,17 +37,26 @@ function Library() {
       return navigate('/login');
     }
 
+    if (view === 'Favorites') {
+      return setUserGames(favoriteGames);
+    }
     setUserGames(games);
-  }, [games, navigate]);
+  }, [games, navigate, view]);
 
   const setCategory = (category) => {
     setSelectedCategory(category);
     setView('');
   };
+
   const handleViewChange = ({ target }) => {
     setView(target.value);
     setSelectedCategory('');
+    if (view === 'Favorites') {
+      return setUserGames(favoriteGames);
+    }
+    setUserGames(games);
   };
+
   return (
     <Paper
       sx={{
@@ -91,7 +102,7 @@ function Library() {
           </Select>
         </FormControl>
       </Toolbar>
-      { userGames.length ? <GamesList games={userGames} mobile={mobile} /> : '' }
+      {userGames.length ? <GamesList games={userGames} mobile={mobile} /> : ''}
       <Footer />
     </Paper>
   );
