@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const viewSlice = createSlice({
   name: 'view',
   initialState: {
-    view: 'all',
+    view: 'All',
   },
   reducers: {
     updateCategory: (state, { payload }) => {

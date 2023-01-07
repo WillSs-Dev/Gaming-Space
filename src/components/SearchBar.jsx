@@ -17,10 +17,12 @@ import { useState } from 'react';
 import { categories } from '../api/mock-responses';
 import { useDispatch } from 'react-redux';
 import { requestSearchedGames } from '../redux/reducers/catalogSlice';
+import { updateCategory } from '../redux/reducers/viewSlice';
 
-function SearchBar({ viewSlider, viewPagination }) {
+function SearchBar({ viewSlider, viewPagination, setPagination }) {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [inputText, setInputText] = useState('');
+
   const { palette } = useTheme();
   const dispatch = useDispatch();
 
@@ -43,8 +45,10 @@ function SearchBar({ viewSlider, viewPagination }) {
     dispatch(requestSearchedGames(inputText));
   };
 
-  const setCategory = (category) => {
+  const handleCategoryChange = (category) => {
+    setPagination(1);
     setSelectedCategory(category);
+    dispatch(updateCategory(category));
   };
 
   return (
@@ -75,7 +79,7 @@ function SearchBar({ viewSlider, viewPagination }) {
                   <MenuItem
                     key={category.id}
                     value={category.name}
-                    onClick={() => setCategory(category.name)}>
+                    onClick={() => handleCategoryChange(category.name)}>
                     {category.name}
                   </MenuItem>
                 ))}

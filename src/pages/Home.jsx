@@ -10,9 +10,11 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import {
   requestNewGames,
+  requestNewGamesByCategory,
   selectGamesInCatalog,
 } from '../redux/reducers/catalogSlice';
 import { useNavigate } from 'react-router-dom';
+import { selectCurrentView } from '../redux/reducers/viewSlice';
 
 export default function Home() {
   const [showSlider, setShowSlider] = useState(true);
@@ -20,6 +22,7 @@ export default function Home() {
   const [showPagination, setShowPagination] = useState(true);
 
   const { games } = useSelector(selectGamesInCatalog);
+  const { view } = useSelector(selectCurrentView);
 
   const navigate = useNavigate();
   const theme = useTheme();
@@ -33,8 +36,13 @@ export default function Home() {
       return navigate('/login');
     }
 
-    dispatch(requestNewGames(pagination));
-  }, [pagination, dispatch, navigate]);
+    if (view === 'All') {
+      dispatch(requestNewGames(pagination));
+      return
+    }
+
+    dispatch(requestNewGamesByCategory(pagination, view))
+  }, [pagination, dispatch, navigate, view]);
 
   return (
     <Paper
@@ -47,6 +55,7 @@ export default function Home() {
       }}>
       <Header />
       <SearchBar
+        setPagination={setPagination}
         viewSlider={setShowSlider}
         viewPagination={setShowPagination}
       />

@@ -14,6 +14,14 @@ const getNewPage = (navNumber) =>
     .then((response) => response.json())
     .catch((err) => err);
 
+const getNewPageWithCategory = (navNumber, category) =>
+  fetch(
+    `${baseUrl}/games?key=${apiKey}&page=${navNumber}&genres=${category}&page_size=15`,
+    options
+  )
+    .then((response) => response.json())
+    .catch((err) => err);
+
 const getGameById = (id) =>
   fetch(`${baseUrl}/games/${id}?key=${apiKey}`, options)
     .then((response) => response.json())
@@ -30,10 +38,7 @@ const getStoresById = (id) =>
     .catch((err) => err);
 
 const searchGames = (inputText) =>
-  fetch(
-    `${baseUrl}/games?key=${apiKey}&search=${inputText}`,
-    options
-  )
+  fetch(`${baseUrl}/games?key=${apiKey}&search=${inputText}`, options)
     .then((response) => response.json())
     .catch((err) => err);
 
@@ -43,4 +48,5 @@ export {
   getGameScreenshots,
   getStoresById,
   searchGames,
+  getNewPageWithCategory,
 };
