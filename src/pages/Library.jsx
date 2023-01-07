@@ -11,18 +11,22 @@ import {
   Select,
   MenuItem,
 } from '@mui/material';
-import { userGames } from '../api/mock-responses';
 import React, { useEffect, useState } from 'react';
 import { Header, Footer, GamesList } from '../components';
 import { categories } from '../api/mock-responses';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectGamesInLibrary } from '../redux/reducers/libraryReducer';
 
 function Library() {
+  const [view, setView] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [userGames, setUserGames] = useState([]);
+
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
-  const [view, setView] = useState('All');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const { games } = useSelector(selectGamesInLibrary);
 
   useEffect(() => {
     const userIsLogged = JSON.parse(localStorage.getItem('login'));
@@ -31,7 +35,8 @@ function Library() {
       return navigate('/login');
     }
 
-  }, [navigate]);
+    setUserGames(games);
+  }, [games, navigate]);
 
   const setCategory = (category) => {
     setSelectedCategory(category);
@@ -86,7 +91,7 @@ function Library() {
           </Select>
         </FormControl>
       </Toolbar>
-      <GamesList games={userGames} mobile={mobile} />
+      { userGames.length ? <GamesList games={userGames} mobile={mobile} /> : '' }
       <Footer />
     </Paper>
   );

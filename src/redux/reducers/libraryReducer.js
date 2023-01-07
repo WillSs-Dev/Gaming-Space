@@ -18,7 +18,7 @@ const librarySlice = createSlice({
 
 const { addGame, removeGame } = librarySlice.actions;
 
-const selectGamesInLibrary = ({ games }) => games;
+const selectGamesInLibrary = ({ library }) => library;
 
 export { addGame, removeGame, librarySlice, selectGamesInLibrary };
 

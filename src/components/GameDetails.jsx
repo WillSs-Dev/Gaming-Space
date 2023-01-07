@@ -13,10 +13,14 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { addGame, removeGame } from '../redux/reducers/libraryReducer';
+import {
+  addGame,
+  removeGame,
+  selectGamesInLibrary,
+} from '../redux/reducers/libraryReducer';
 import getIcon from '../utils/icons';
 import CTA from './CTA';
 
@@ -24,13 +28,15 @@ function GameDetails({ game, mobile }) {
   const [pcRequirements, setPcRequirements] = useState('');
   const [gameInLibrary, setGameInLibrary] = useState(false);
   const [gameFavorite, setGameFavorite] = useState(false);
+
+  const { games: gamesInLibrary } = useSelector(selectGamesInLibrary);
   const dispatch = useDispatch();
 
   const handleAddtoLibrary = () => {
     setGameInLibrary(!gameInLibrary);
     if (gameInLibrary) {
       return dispatch(removeGame(game));
-    };
+    }
     dispatch(addGame(game));
   };
 
@@ -43,7 +49,14 @@ function GameDetails({ game, mobile }) {
       ({ platform }) => platform.name === 'PC'
     ).requirements;
     setPcRequirements(requirements);
-  }, [game]);
+
+    const gameIsInLibrary = gamesInLibrary.some(
+      (gameInLibrary) => gameInLibrary.id === game.id
+    );
+    if (gameIsInLibrary) {
+      setGameInLibrary(true);
+    }
+  }, [gamesInLibrary, game]);
 
   return (
     <>
@@ -131,11 +144,28 @@ function GameDetails({ game, mobile }) {
             ))}
           </Grid>
           <Paper sx={{ display: 'flex', gap: 1 }}>
-            <Button variant='contained' sx={{ mt: 1 }} onClick={handleAddtoLibrary}>
-              Library { gameInLibrary ? <Check sx={{ mr: -1, ml: 1 }} /> : <Add sx={{ mr: -1, ml: 1 }} />}
+            <Button
+              variant='contained'
+              sx={{ mt: 1 }}
+              onClick={handleAddtoLibrary}>
+              Library{' '}
+              {gameInLibrary ? (
+                <Check sx={{ mr: -1, ml: 1 }} />
+              ) : (
+                <Add sx={{ mr: -1, ml: 1 }} />
+              )}
             </Button>
-            <Button variant='contained' color='error' sx={{ mt: 1 }} onClick={handleFavorite}>
-              Favorite { gameFavorite ? <Favorite sx={{ mr: -1, ml: 1 }} /> : <FavoriteBorder sx={{ mr: -1, ml: 1 }} />}
+            <Button
+              variant='contained'
+              color='error'
+              sx={{ mt: 1 }}
+              onClick={handleFavorite}>
+              Favorite{' '}
+              {gameFavorite ? (
+                <Favorite sx={{ mr: -1, ml: 1 }} />
+              ) : (
+                <FavoriteBorder sx={{ mr: -1, ml: 1 }} />
+              )}
             </Button>
           </Paper>
         </Paper>
