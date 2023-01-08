@@ -36,10 +36,11 @@ function Slider() {
   }, [games]);
 
   return (
-    <Paper sx={{ p: 3, m: 'auto', borderRadius: '15px' }}>
+    <Paper sx={{ p: 2, m: 'auto', borderRadius: '15px', maxWidth: '80vW' }}>
       <Swiper
         modules={[Navigation, Pagination]}
         slidesPerView={1}
+        style={{ minHeight: '30vH' }}
         navigation={{ clickable: true }}
         pagination
         loop>
@@ -47,8 +48,10 @@ function Slider() {
           <SwiperSlide key={game.id}>
             <Card
               sx={{
-                display: mobile ? 'block' : 'flex',
+                display: 'flex',
+                flexDirection: mobile ? 'column' : 'row',
                 px: 5,
+                py: 3,
                 justifyContent: 'space-evenly',
               }}>
               <Link to={`/games/${game.id}`}>
