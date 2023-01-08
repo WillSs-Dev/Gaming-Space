@@ -25,7 +25,6 @@ function GameDetailsPage() {
   return (
     <Paper>
       <Header />
-      <SearchBar />
       {game ? <GameDetails game={game} mobile={mobile} /> : <CircularProgress sx={{ mb: 3 }} />}
       <Footer />
     </Paper>
