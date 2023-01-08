@@ -93,6 +93,13 @@ const theme = createTheme({
         }
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+        }
+      },
+    },
   },
   overrides: {
     MuiSwitch: {
