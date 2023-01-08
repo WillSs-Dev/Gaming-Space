@@ -4,7 +4,7 @@ import { Grid, Box } from '@mui/material';
 
 function GamesList({ games, mobile }) {
   return (
-    <Box mt={3} pb={4} sx={{ minHeight: '55vH' }}>
+    <Box mt={3} pb={4}>
       <Grid
         container
         direction='row'
