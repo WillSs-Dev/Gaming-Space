@@ -87,7 +87,7 @@ function Library() {
             sx={{ mx: 'auto', mb: 5 }}
             variant='h4'
             fontFamily='Righteous'>
-            No games here yet
+            No games here yet 😕
           </Typography>
         </Paper>
       )}
