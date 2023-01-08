@@ -6,7 +6,6 @@ import {
   ReviewsList,
   GamesList,
 } from '../components';
-import { fiveGames } from '../api/mock-responses';
 import { Paper, Typography } from '@mui/material';
 import { useMediaQuery, useTheme } from '@mui/material';
 import { userReviews } from '../utils/mock-reviews.js';
@@ -15,8 +14,8 @@ import { useSelector } from 'react-redux';
 import { selectGamesInLibrary } from '../redux/reducers/libraryReducer';
 
 function Profile() {
-  // const { results: gamesInLibrary } = fiveGames;
   const [gamesInLibrary, setGamesInLibrary] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -37,7 +36,7 @@ function Profile() {
     <Paper
       sx={{
         background:
-          'linear-gradient(-120deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 15%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 100%)',
+          'linear-gradient(-120deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 15%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 120%)',
       }}>
       <Header />
       <ProfileInfo mobile={mobile} />
@@ -48,7 +47,7 @@ function Profile() {
         sx={{ fontFamily: 'Righteous' }}>
         Games in Library:
       </Typography>
-      <hr style={{ maxWidth: '78vW' }} />
+      <hr style={{ maxWidth: '20vW' }} />
       {gamesInLibrary.length ? (
         <GamesList games={gamesInLibrary} />
       ) : (
@@ -63,15 +62,37 @@ function Profile() {
             sx={{ mx: 'auto', my: 4 }}
             variant='h5'
             fontFamily='Righteous'>
-            No games here yet
+            No games here yet 😕
           </Typography>
         </Paper>
       )}
       <hr style={{ maxWidth: '78vW' }} />
-      <Typography variant='h4' align='center' sx={{ fontFamily: 'Righteous', mt: 5 }}>
+      <Typography
+        variant='h4'
+        align='center'
+        sx={{ fontFamily: 'Righteous', my: 3 }}>
         Your Reviews:
       </Typography>
-      <ReviewsList mobile={mobile} reviews={userReviews} />
+      <hr style={{ maxWidth: '20vW' }} />
+      {reviews.length ? (
+        <ReviewsList mobile={mobile} reviews={userReviews} />
+      ) : (
+        <Paper
+          sx={{
+            backgroundColor: 'transparent',
+            boxShadow: 'none',
+            display: 'flex',
+            alignItems: 'center',
+          }}>
+          <Typography
+            sx={{ mx: 'auto', my: 4 }}
+            variant='h5'
+            fontFamily='Righteous'>
+            No reviews here yet 😕
+          </Typography>
+        </Paper>
+      )}
+      <hr style={{ maxWidth: '78vW' }} />
       <Footer />
     </Paper>
   );
