@@ -73,7 +73,7 @@ function GameDetails({ game, mobile }) {
     if (gameIsFavorite) {
       setGameFavorite(true);
     }
-  }, [gamesInLibrary, game]);
+  }, [gamesInLibrary, game, favoriteGames]);
 
   return (
     <>
