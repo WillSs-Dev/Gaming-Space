@@ -1,5 +1,5 @@
 import { CircularProgress, Paper, useMediaQuery } from '@mui/material';
-import { Footer, Header, SearchBar, GameDetails } from '../components';
+import { Footer, Header, GameDetails } from '../components';
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material';
 import { useParams } from 'react-router-dom';
