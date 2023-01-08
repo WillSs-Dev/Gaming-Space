@@ -22,4 +22,4 @@ const selectUserReviews = ({ reviews }) => reviews;
 
 export { addReview, removeReview, reviewSlice, selectUserReviews };
 
-export default librarySlice.reducer;
+export default reviewSlice.reducer;
