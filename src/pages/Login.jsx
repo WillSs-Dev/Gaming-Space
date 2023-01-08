@@ -47,7 +47,7 @@ function Login() {
       sx={{
         minHeight: '100vH',
         background:
-          'linear-gradient(-120deg, rgba(4,0,30,1) 10%, rgba(11,15,46,1) 35%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 100%)',
+          'linear-gradient(-120deg, rgba(4,0,30,1) 20%, rgba(11,15,46,1) 35%, rgba(20,28,93,1) 55%, rgba(2,106,208,1) 100%)',
       }}>
       <Box
         maxWidth={mobile ? '100vW' : '35vW'}
