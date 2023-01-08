@@ -190,7 +190,7 @@ function GameDetails({ game, mobile }) {
       <CTA game={game} />
       <hr style={{ width: '90vW' }} />
       <Paper
-        sx={{ p: 2, display: mobile ? 'block' : 'flex', ml: mobile ? 2 : 6 }}>
+        sx={{ px: 4, py: 2, display: mobile ? 'block' : 'flex'}}>
         <Paper sx={{ maxWidth: mobile ? '100vW' : '40vW' }}>
           <Typography
             variant='h5'
@@ -201,7 +201,7 @@ function GameDetails({ game, mobile }) {
           </Typography>
           <Paper dangerouslySetInnerHTML={{ __html: game.description }} />
         </Paper>
-        <Paper sx={{ ml: mobile ? 0 : 6 }}>
+        <Paper sx={{ ml: mobile ? 0 : 6, my: mobile ? 3 : 0 }}>
           <Typography
             variant='h5'
             color='palette.text.primary'
@@ -217,7 +217,7 @@ function GameDetails({ game, mobile }) {
             ))}
           </List>
         </Paper>
-        <Paper sx={{ ml: mobile ? 0 : 6, maxWidth: mobile ? '90vW' : '30vW' }}>
+        <Paper sx={{ ml: mobile ? 0 : 6, mb: 2, maxWidth: mobile ? '90vW' : '30vW' }}>
           <Typography
             variant='h5'
             color='palette.text.primary'

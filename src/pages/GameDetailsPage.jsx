@@ -23,9 +23,9 @@ function GameDetailsPage() {
   }, [id]);
 
   return (
-    <Paper>
+    <Paper sx={{ minHeight: '100vH', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Header />
-      {game ? <GameDetails game={game} mobile={mobile} /> : <CircularProgress sx={{ mb: 3 }} />}
+      {game ? <GameDetails game={game} mobile={mobile} /> : <CircularProgress sx={{ m: 'auto' }} />}
       <Footer />
     </Paper>
   );
