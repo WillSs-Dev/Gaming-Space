@@ -48,7 +48,7 @@ export default function Home() {
     <Paper
       sx={{
         background:
-          'linear-gradient(-120deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 15%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 100%)',
+          'linear-gradient(-120deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 50%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 120%)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
