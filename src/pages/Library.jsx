@@ -41,7 +41,7 @@ function Library() {
       return setUserGames(favoriteGames);
     }
     setUserGames(games);
-  }, [games, navigate, view]);
+  }, [games, navigate, view, favoriteGames]);
 
   const setCategory = (category) => {
     setSelectedCategory(category);
@@ -61,7 +61,7 @@ function Library() {
     <Paper
       sx={{
         background:
-          'linear-gradient(-120deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 15%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 100%)',
+          'linear-gradient(-120deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 50%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 120%)',
       }}>
       <Header />
       <Typography
@@ -82,27 +82,26 @@ function Library() {
           <ToggleButton value='All'>All</ToggleButton>
           <ToggleButton value='Favorites'>Favorites</ToggleButton>
         </ToggleButtonGroup>
-        <FormControl sx={{ minWidth: mobile ? 100 : 210 }}>
-          <InputLabel sx={{ color: '#0288d1 !important' }} id='category-label'>
-            Filter by:
-          </InputLabel>
-          <Select
-            label='CATEGORY'
-            labelId='category-label'
-            variant='standard'
-            value={selectedCategory}>
-            {categories.map((category) => (
-              <MenuItem
-                key={category.id}
-                value={category.name}
-                onClick={() => setCategory(category.name)}>
-                {category.name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
       </Toolbar>
-      {userGames.length ? <GamesList games={userGames} mobile={mobile} /> : ''}
+      <hr style={{ maxWidth: '78vW' }} />
+      {userGames.length ? (
+        <GamesList games={userGames} mobile={mobile} />
+      ) : (
+        <Paper
+          sx={{
+            minHeight: '58.6vH',
+            backgroundColor: 'transparent',
+            display: 'flex',
+            alignItems: 'center',
+          }}>
+          <Typography
+            sx={{ mx: 'auto', mb: 5 }}
+            variant='h4'
+            fontFamily='Righteous'>
+            No games here yet
+          </Typography>
+        </Paper>
+      )}
       <Footer />
     </Paper>
   );
