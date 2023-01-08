@@ -3,6 +3,7 @@ import catalogReducer from './reducers/catalogSlice';
 import viewReducer from './reducers/viewSlice';
 import libraryReducer from './reducers/libraryReducer';
 import favoriteReducer from './reducers/favoriteReducer';
+import reviewReducer from './reducers/reviewSlice.js';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     view: viewReducer,
     library: libraryReducer,
     favorites: favoriteReducer,
+    reviews: reviewReducer,
   },
 });
 
