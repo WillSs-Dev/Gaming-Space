@@ -37,7 +37,6 @@ function Library() {
     setUserGames(games);
   }, [games, navigate, view, favoriteGames]);
 
-
   const handleViewChange = ({ target }) => {
     setView(target.value);
     if (view === 'Favorites') {
@@ -74,11 +73,19 @@ function Library() {
       </Toolbar>
       <hr style={{ maxWidth: '78vW' }} />
       {userGames.length ? (
-        <GamesList games={userGames} mobile={mobile} />
+        <Paper
+          sx={{
+            height: '58.6vH',
+            backgroundColor: 'transparent',
+            display: 'flex',
+            justifyContent: 'center',
+          }}>
+          <GamesList games={userGames} mobile={mobile} />
+        </Paper>
       ) : (
         <Paper
           sx={{
-            minHeight: '58.6vH',
+            height: '58.6vH',
             backgroundColor: 'transparent',
             display: 'flex',
             alignItems: 'center',
