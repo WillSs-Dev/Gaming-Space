@@ -6,14 +6,9 @@ import {
   Toolbar,
   ToggleButton,
   ToggleButtonGroup,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Header, Footer, GamesList } from '../components';
-import { categories } from '../api/mock-responses';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectGamesInLibrary } from '../redux/reducers/libraryReducer';
@@ -21,7 +16,6 @@ import { selectFavoriteGames } from '../redux/reducers/favoriteReducer';
 
 function Library() {
   const [view, setView] = useState('All');
-  const [selectedCategory, setSelectedCategory] = useState('');
   const [userGames, setUserGames] = useState([]);
 
   const theme = useTheme();
@@ -43,14 +37,9 @@ function Library() {
     setUserGames(games);
   }, [games, navigate, view, favoriteGames]);
 
-  const setCategory = (category) => {
-    setSelectedCategory(category);
-    setView('');
-  };
 
   const handleViewChange = ({ target }) => {
     setView(target.value);
-    setSelectedCategory('');
     if (view === 'Favorites') {
       return setUserGames(favoriteGames);
     }
