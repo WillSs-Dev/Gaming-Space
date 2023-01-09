@@ -1,5 +1,5 @@
 import { CircularProgress, Paper, useMediaQuery } from '@mui/material';
-import { Footer, Header, GameDetails } from '../components';
+import { Footer, Header, GameDetails, Reviews } from '../components';
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material';
 import { useParams } from 'react-router-dom';
@@ -23,9 +23,22 @@ function GameDetailsPage() {
   }, [id]);
 
   return (
-    <Paper sx={{ minHeight: '100vH', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Paper
+      sx={{
+        minHeight: '100vH',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        background:
+          'linear-gradient(-120deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 50%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 120%)',
+      }}>
       <Header />
-      {game ? <GameDetails game={game} mobile={mobile} /> : <CircularProgress sx={{ m: 'auto' }} />}
+      {game ? (
+        <GameDetails game={game} mobile={mobile} />
+      ) : (
+        <CircularProgress sx={{ m: 'auto' }} />
+      )}
+      {game ? <Reviews mobile={mobile} /> : ''}
       <Footer />
     </Paper>
   );
