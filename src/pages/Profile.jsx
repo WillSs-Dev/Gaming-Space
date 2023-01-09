@@ -8,10 +8,11 @@ import {
 } from '../components';
 import { Paper, Typography } from '@mui/material';
 import { useMediaQuery, useTheme } from '@mui/material';
-import { userReviews } from '../utils/mock-reviews.js';
+// import { userReviews } from '../utils/mock-reviews.js';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectGamesInLibrary } from '../redux/reducers/libraryReducer';
+import { selectUserReviews } from '../redux/reducers/reviewSlice';
 
 function Profile() {
   const [gamesInLibrary, setGamesInLibrary] = useState([]);
@@ -21,6 +22,7 @@ function Profile() {
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
   const { games } = useSelector(selectGamesInLibrary);
+  const { userReviews } = useSelector(selectUserReviews);
 
   useEffect(() => {
     const userIsLogged = JSON.parse(localStorage.getItem('login'));
@@ -30,7 +32,8 @@ function Profile() {
     }
 
     setGamesInLibrary(games);
-  }, [navigate, games]);
+    setReviews(userReviews);
+  }, [navigate, games, userReviews]);
 
   return (
     <Paper
@@ -75,7 +78,7 @@ function Profile() {
       </Typography>
       <hr style={{ maxWidth: '20vW' }} />
       {reviews.length ? (
-        <ReviewsList mobile={mobile} reviews={userReviews} />
+        <ReviewsList mobile={mobile} reviews={reviews} />
       ) : (
         <Paper
           sx={{

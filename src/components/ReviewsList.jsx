@@ -29,18 +29,27 @@ function ReviewsList({ reviews, mobile }) {
               <Typography variant='subtitle2'>{`${review.reviewerName}'s rating:`}</Typography>
               <Rating
                 defaultValue={review.numericRating}
-                emptyIcon={ <StarBorderOutlined sx={{ color: '#f6f6f6' }} />}
+                emptyIcon={<StarBorderOutlined sx={{ color: '#f6f6f6' }} />}
                 precision={0.5}
                 readOnly
               />
               <Typography variant='subtitle1'>{review.finalRating}</Typography>
             </Paper>
-            <TextField
-              defaultValue={review.reviewDetails}
-              InputProps={{ readOnly: true }}
-              multiline
-              fullWidth
-            />
+            <Paper
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                backgroundColor: 'transparent',
+                width: '100%',
+              }}>
+              <Typography fontFamily='Righteous' sx={{ mb: 1 }}>{`${review.reviewerName}'s review:`}</Typography>
+              <TextField
+                defaultValue={review.reviewDetails}
+                InputProps={{ readOnly: true }}
+                multiline
+                fullWidth
+              />
+            </Paper>
           </Paper>
         </Grid>
       ))}
