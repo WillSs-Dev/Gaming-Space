@@ -1,3 +1,4 @@
+import { StarBorderOutlined } from '@mui/icons-material';
 import { Grid, Paper, Rating, TextField, Typography } from '@mui/material';
 import React from 'react';
 
@@ -28,6 +29,7 @@ function ReviewsList({ reviews, mobile }) {
               <Typography variant='subtitle2'>{`${review.reviewerName}'s rating:`}</Typography>
               <Rating
                 defaultValue={review.numericRating}
+                emptyIcon={ <StarBorderOutlined sx={{ color: '#f6f6f6' }} />}
                 precision={0.5}
                 readOnly
               />
