@@ -17,7 +17,7 @@ function Header() {
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
   const location = useLocation();
-  const avatar = JSON.parse(localStorage.getItem('images'));
+  const images = JSON.parse(localStorage.getItem('images'));
 
   const { pathname } = location;
 
@@ -51,7 +51,11 @@ function Header() {
 
         <Link to='/profile'>
           <IconButton>
-            <Avatar src={avatar ? avatar.profile : null}>A</Avatar>
+            <Avatar
+              src={images ? images.profile : null}
+              sx={{ border: '3px solid #f6f6f6' }}>
+              A
+            </Avatar>
           </IconButton>
         </Link>
       </Toolbar>
