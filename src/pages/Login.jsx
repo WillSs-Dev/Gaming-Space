@@ -64,7 +64,7 @@ function Login() {
           <Typography
             variant='h5'
             position='relative'
-            sx={{ fontFamily: 'Righteous', overflow: 'hidden' }}>
+            sx={{ fontFamily: 'Righteous', overflow: 'hidden', textAlign: 'center' }}>
             You have to fill every field to proceed
           </Typography>
         </Dialog>

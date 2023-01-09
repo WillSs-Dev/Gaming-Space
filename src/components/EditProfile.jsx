@@ -47,7 +47,7 @@ function EditProfile({ setEditOpen, mobile }) {
         <Typography
           variant='h4'
           position='relative'
-          sx={{ fontFamily: 'Righteous', overflow: 'hidden' }}>
+          sx={{ fontFamily: 'Righteous', overflow: 'hidden', textAlign: 'center' }}>
           You have to edit at least one field to save!
         </Typography>
       </Dialog>
