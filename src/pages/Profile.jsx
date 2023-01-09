@@ -78,7 +78,15 @@ function Profile() {
       </Typography>
       <hr style={{ maxWidth: '20vW' }} />
       {reviews.length ? (
-        <ReviewsList mobile={mobile} reviews={reviews} />
+        <Paper sx={{
+          backgroundColor: 'transparent',
+          width: 'fit-content',
+          m: 'auto',
+          display: 'flex',
+          justifyContent: 'center',
+        }}>
+          <ReviewsList mobile={mobile} reviews={reviews} />
+        </Paper>
       ) : (
         <Paper
           sx={{

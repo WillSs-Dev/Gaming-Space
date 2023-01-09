@@ -13,11 +13,11 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addReview, selectUserReviews } from '../redux/reducers/reviewSlice';
+import { useDispatch } from 'react-redux';
+import { addReview } from '../redux/reducers/reviewSlice';
 import getFinalRating from '../utils/reviews';
 
-function AddReview({ mobile, game }) {
+function AddReview({ mobile, game, userReviews }) {
   const [rate, setRate] = useState(0);
   const [review, setReview] = useState('');
   const [showAlert, setShowAlert] = useState(false);
@@ -25,7 +25,6 @@ function AddReview({ mobile, game }) {
   const images = JSON.parse(localStorage.getItem('images'));
   const loginInfo = JSON.parse(localStorage.getItem('login'));
   const dispatch = useDispatch();
-  const { userReviews } = useSelector(selectUserReviews);
 
   const handleSubmit = () => {
     if (!rate || !review) {
@@ -52,6 +51,7 @@ function AddReview({ mobile, game }) {
         p: 3,
         display: 'flex',
         flexDirection: 'row',
+        maxWidth: 'fit-content',
         gap: 1,
         m: 2,
       }}>

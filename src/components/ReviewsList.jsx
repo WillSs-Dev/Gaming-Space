@@ -11,7 +11,7 @@ function ReviewsList({ reviews, mobile }) {
           key={review.reviewerName + '/' + review.gameName}
           xs={mobile ? 12 : 6}>
           <Paper
-            sx={{ backgroundColor: '#05101C', display: 'flex', p: 3, gap: 2 }}>
+            sx={{ backgroundColor: '#05101C', display: 'flex', p: 3, gap: 2, width: 'max-content' }}>
             <Paper
               sx={{
                 p: 1,
@@ -40,7 +40,6 @@ function ReviewsList({ reviews, mobile }) {
                 display: 'flex',
                 flexDirection: 'column',
                 backgroundColor: 'transparent',
-                width: '100%',
               }}>
               <Typography fontFamily='Righteous' sx={{ mb: 1 }}>{`${review.reviewerName}'s review:`}</Typography>
               <TextField
