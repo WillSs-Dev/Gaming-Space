@@ -2,10 +2,10 @@ import { Paper } from '@mui/material';
 import React from 'react'
 import { AddReview } from './';
 
-function Reviews({mobile}) {
+function Reviews({mobile, game}) {
   return (
     <Paper sx={{ backgroundColor: 'transparent' }}>
-      <AddReview mobile={mobile} />
+      <AddReview mobile={mobile} game={game} />
     </Paper>
   )
 }

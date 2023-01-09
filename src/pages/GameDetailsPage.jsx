@@ -38,7 +38,7 @@ function GameDetailsPage() {
       ) : (
         <CircularProgress sx={{ m: 'auto' }} />
       )}
-      {game ? <Reviews mobile={mobile} /> : ''}
+      {game ? <Reviews mobile={mobile} game={game} /> : ''}
       <Footer />
     </Paper>
   );

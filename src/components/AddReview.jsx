@@ -1,6 +1,5 @@
 import {
   Done,
-  FavoriteBorderOutlined,
   StarBorderOutlined,
 } from '@mui/icons-material';
 import {
@@ -8,25 +7,42 @@ import {
   Button,
   Dialog,
   FormControl,
-  Input,
+  OutlinedInput,
   Paper,
   Rating,
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addReview, selectUserReviews } from '../redux/reducers/reviewSlice';
 import getFinalRating from '../utils/reviews';
 
-function AddReview({ mobile }) {
+function AddReview({ mobile, game }) {
   const [rate, setRate] = useState(0);
   const [review, setReview] = useState('');
   const [showAlert, setShowAlert] = useState(false);
 
   const images = JSON.parse(localStorage.getItem('images'));
+  const loginInfo = JSON.parse(localStorage.getItem('login'));
+  const dispatch = useDispatch();
+  const { userReviews } = useSelector(selectUserReviews);
 
   const handleSubmit = () => {
     if (!rate || !review) {
-      setShowAlert(true);
+      return setShowAlert(true);
     }
+
+    const reviewObj = {
+      id: userReviews.length ? userReviews[userReviews.length - 1].id + 1 : 0,
+      gameName: game.name,
+      backgroundImage: game.background_image,
+      reviewerName: loginInfo.username,
+      finalRating: getFinalRating[rate],
+      numericRating: rate,
+      reviewDetails: review,
+    }
+
+    dispatch(addReview(reviewObj));
   };
 
   return (
@@ -81,18 +97,16 @@ function AddReview({ mobile }) {
             You have to add your review and your rating
           </Typography>
         </Dialog>
-        <Input
+        <OutlinedInput
           multiline
           minRows={5}
           maxRows={15}
           placeholder='Add your review:'
           value={review}
-          onChange={(__e, newValue) => setReview(newValue)}
+          onChange={(e) => setReview(e.target.value)}
           sx={{
-            border: '1px solid #f6f6f6',
             p: 2,
             m: 1,
-            borderRadius: '15px 15px 0 0',
             width: mobile ? '50vW' : '30vw',
           }}
         />

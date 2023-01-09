@@ -7,19 +7,24 @@ const reviewSlice = createSlice({
   },
   reducers: {
     addReview: (state, { payload }) => {
-      state.reviews.push(payload);
+      state.userReviews.push(payload);
     },
 
     removeReview: (state, { payload }) => {
-      state.reviews = state.reviews.filter((review) => review.id !== payload.id);
+      state.userReviews = state.userReviews.filter((review) => review.id !== payload.id);
+    },
+
+    editReview: (state, { payload }) => {
+      state.userReviews[payload.id] = payload;
+
     },
   },
 });
 
-const { addReview, removeReview } = reviewSlice.actions;
+const { addReview, removeReview, editReview } = reviewSlice.actions;
 
 const selectUserReviews = ({ reviews }) => reviews;
 
-export { addReview, removeReview, reviewSlice, selectUserReviews };
+export { addReview, removeReview, editReview, reviewSlice, selectUserReviews };
 
 export default reviewSlice.reducer;
