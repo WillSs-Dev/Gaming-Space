@@ -1,7 +1,7 @@
 import { Button, Grid, Paper, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { getStoresById } from '../api';
-import translateStore from '../utils/storeNames';
+import getStore from '../utils/storeNames';
 
 function CTA({ game }) {
   const [stores, setStores] = useState([]);
@@ -21,7 +21,7 @@ function CTA({ game }) {
           <Grid item key={id} m={1}>
             <Button variant='outlined'>
               <a href={url} target='__blank'>
-                {translateStore[store_id]}
+                {getStore[store_id]}
               </a>
             </Button>
           </Grid>

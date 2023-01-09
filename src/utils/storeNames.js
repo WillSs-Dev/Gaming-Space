@@ -1,4 +1,4 @@
-const translateStore = {
+const getStore = {
   1: 'Steam',
   2: 'Xbox Store',
   3: 'PlayStation Store',
@@ -11,4 +11,4 @@ const translateStore = {
   11: 'Epic Games',
 }
 
-export default translateStore;
+export default getStore;
