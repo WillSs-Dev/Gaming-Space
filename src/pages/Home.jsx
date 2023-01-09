@@ -91,7 +91,7 @@ export default function Home() {
           size={'large'}
           shape='rounded'
           sx={{
-            mb: 3,
+            mb: games.length ? 3 : 11,
             backgroundColor: 'rgba(4,53,108,255)',
             borderRadius: 15,
           }}
