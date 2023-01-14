@@ -42,6 +42,11 @@ const searchGames = (inputText) =>
     .then((response) => response.json())
     .catch((err) => err);
 
+const getCategories = () =>
+  fetch(`${baseUrl}/genres?key=${apiKey}`, options)
+    .then((response) => response.json())
+    .catch((err) => err);
+
 export {
   getNewPage,
   getGameById,
@@ -49,4 +54,5 @@ export {
   getStoresById,
   searchGames,
   getNewPageWithCategory,
+  getCategories,
 };

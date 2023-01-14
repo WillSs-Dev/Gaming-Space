@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   FormControl,
   InputAdornment,
@@ -14,14 +14,15 @@ import { Search } from '@mui/icons-material';
 import { Container } from '@mui/system';
 import { useTheme, MenuItem } from '@mui/material';
 import { useState } from 'react';
-import { categories } from '../api/mock-responses';
 import { useDispatch } from 'react-redux';
 import { requestSearchedGames } from '../redux/reducers/catalogSlice';
 import { updateCategory } from '../redux/reducers/viewSlice';
+import { getCategories } from '../api';
 
 function SearchBar({ viewSlider, viewPagination, setPagination }) {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [inputText, setInputText] = useState('');
+  const [categories, setCategories] = useState([]);
 
   const { palette } = useTheme();
   const dispatch = useDispatch();
@@ -50,6 +51,16 @@ function SearchBar({ viewSlider, viewPagination, setPagination }) {
     setSelectedCategory(category);
     dispatch(updateCategory(category));
   };
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const {results} = await getCategories();
+      const filteredResults = results.filter((result) => result.name !== 'RPG');
+      setCategories(filteredResults);
+    }
+    fetchCategories();
+  }, [])
+  
 
   return (
     <Container sx={{ px: '0 !important' }}>
