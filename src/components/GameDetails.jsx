@@ -59,7 +59,6 @@ function GameDetails({ game, mobile }) {
       ({ platform }) => platform.name === 'PC'
     ).requirements;
     setPcRequirements(requirements);
-    console.log(requirements)
 
     const gameIsInLibrary = gamesInLibrary.some(
       (gameInLibrary) => gameInLibrary.id === game.id
