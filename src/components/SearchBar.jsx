@@ -48,7 +48,7 @@ function SearchBar({ viewSlider, viewPagination, setPagination }) {
 
   const handleCategoryChange = (category) => {
     setPagination(1);
-    setSelectedCategory(category);
+    setSelectedCategory(category === 'All' ? '' : category);
     dispatch(updateCategory(category));
   };
 
@@ -71,7 +71,7 @@ function SearchBar({ viewSlider, viewPagination, setPagination }) {
           justifyContent: 'space-around',
         }}>
         <ButtonGroup variant='text' color='info'>
-          <Button onClick={() => viewSlider(false)}>All</Button>
+          <Button onClick={() => {viewSlider(false); handleCategoryChange('All')}}>All</Button>
           <Button
             onClick={() => viewSlider(false)}
             sx={{ width: '150px', textTransform: 'none' }}>
