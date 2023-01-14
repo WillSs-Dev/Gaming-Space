@@ -31,7 +31,7 @@ function Slider() {
   const { games } = useSelector(selectGamesInCatalog);
 
   useEffect(() => {
-    const fiveGames = games.slice(0, 5)
+    const fiveGames = games.slice(10, 15)
     setSlides(fiveGames);
   }, [games]);
 
