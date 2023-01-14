@@ -10,9 +10,11 @@ function Reviews({ mobile, game }) {
   const { userReviews } = useSelector(selectUserReviews);
 
   useEffect(() => {
-    const gameReview = userReviews.find((userReview) => userReview.gameName === game.name);
+    const gameReview = userReviews.find(
+      (userReview) => userReview.gameName === game.name
+    );
     gameReview ? setReview([gameReview]) : setReview(undefined);
-  }, [userReviews])
+  }, [userReviews, game]);
 
   return (
     <Paper
