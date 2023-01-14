@@ -59,6 +59,7 @@ function GameDetails({ game, mobile }) {
       ({ platform }) => platform.name === 'PC'
     ).requirements;
     setPcRequirements(requirements);
+    console.log(requirements)
 
     const gameIsInLibrary = gamesInLibrary.some(
       (gameInLibrary) => gameInLibrary.id === game.id
@@ -85,7 +86,8 @@ function GameDetails({ game, mobile }) {
           alignItems: 'center',
           maxWidth: '80vW',
           mx: 'auto',
-          p: 5
+          p: 5,
+          borderRadius: 3,
         }}>
         <Swiper
           modules={[Navigation, Pagination]}
@@ -217,14 +219,20 @@ function GameDetails({ game, mobile }) {
           <Typography variant='h5' fontFamily='Righteous' sx={{ mt: 1 }}>
             PC Requirements
           </Typography>
-          <Paper
-            sx={{ mt: 2 }}
-            dangerouslySetInnerHTML={{ __html: pcRequirements.minimum }}
-          />
-          <Paper
-            sx={{ mt: 2 }}
-            dangerouslySetInnerHTML={{ __html: pcRequirements.recommended }}
-          />
+          {pcRequirements.minimum ? (
+            <>
+              <Paper
+                sx={{ mt: 2 }}
+                dangerouslySetInnerHTML={{ __html: pcRequirements.minimum }}
+              />
+              <Paper
+                sx={{ mt: 2 }}
+                dangerouslySetInnerHTML={{ __html: pcRequirements.recommended }}
+              />
+            </>
+          ) : (
+            <Typography mt={2}>Nothing here yet...</Typography>
+          )}
         </Paper>
       </Paper>
     </>
