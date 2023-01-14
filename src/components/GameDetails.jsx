@@ -81,9 +81,11 @@ function GameDetails({ game, mobile }) {
         sx={{
           display: 'flex',
           flexDirection: mobile ? 'column' : 'row',
-          my: 3,
+          my: 1,
+          alignItems: 'center',
           maxWidth: '80vW',
           mx: 'auto',
+          p: 5
         }}>
         <Swiper
           modules={[Navigation, Pagination]}
@@ -123,15 +125,13 @@ function GameDetails({ game, mobile }) {
           <Typography variant='h5' fontFamily='Righteous'>
             {game.name}
           </Typography>
-          <Typography variant='body1' color='palette.text.primary'>
-            Release date: {game.released}
-          </Typography>
+          <Typography variant='body1'>Release date: {game.released}</Typography>
           <Chip
             sx={{ mt: 1 }}
             avatar={<Avatar>R</Avatar>}
             label={`Rating: ${game.rating}`}
           />
-          <Typography variant='h5' color='palette.text.primary' sx={{ mt: 1 }}>
+          <Typography variant='h5' sx={{ mt: 1 }}>
             Genres
           </Typography>
           <Grid container justifyContent='center'>
@@ -141,7 +141,7 @@ function GameDetails({ game, mobile }) {
               </Grid>
             ))}
           </Grid>
-          <Typography variant='h5' color='palette.text.primary' sx={{ mt: 1 }}>
+          <Typography variant='h5' sx={{ mt: 1 }}>
             Released on:
           </Typography>
           <Grid container spacing={1} justifyContent='center'>
@@ -189,24 +189,15 @@ function GameDetails({ game, mobile }) {
       </Paper>
       <CTA game={game} />
       <hr style={{ width: '90vW' }} />
-      <Paper
-        sx={{ px: 4, py: 2, display: mobile ? 'block' : 'flex'}}>
+      <Paper sx={{ px: 4, py: 2, display: mobile ? 'block' : 'flex', mt: 2 }}>
         <Paper sx={{ maxWidth: mobile ? '100vW' : '40vW' }}>
-          <Typography
-            variant='h5'
-            color='palette.text.primary'
-            fontFamily='Righteous'
-            sx={{ mt: 1 }}>
+          <Typography variant='h5' fontFamily='Righteous' sx={{ mt: 1 }}>
             Description
           </Typography>
           <Paper dangerouslySetInnerHTML={{ __html: game.description }} />
         </Paper>
         <Paper sx={{ ml: mobile ? 0 : 6, my: mobile ? 3 : 0 }}>
-          <Typography
-            variant='h5'
-            color='palette.text.primary'
-            fontFamily='Righteous'
-            sx={{ mt: 1 }}>
+          <Typography variant='h5' fontFamily='Righteous' sx={{ mt: 1 }}>
             Platforms
           </Typography>
           <List sx={{ ml: -1.5, maxWidth: 'fit-content' }}>
@@ -217,12 +208,13 @@ function GameDetails({ game, mobile }) {
             ))}
           </List>
         </Paper>
-        <Paper sx={{ ml: mobile ? 0 : 6, mb: 2, maxWidth: mobile ? '90vW' : '30vW' }}>
-          <Typography
-            variant='h5'
-            color='palette.text.primary'
-            fontFamily='Righteous'
-            sx={{ mt: 1 }}>
+        <Paper
+          sx={{
+            ml: mobile ? 0 : 6,
+            mb: 2,
+            maxWidth: mobile ? '90vW' : '30vW',
+          }}>
+          <Typography variant='h5' fontFamily='Righteous' sx={{ mt: 1 }}>
             PC Requirements
           </Typography>
           <Paper
