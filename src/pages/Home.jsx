@@ -59,7 +59,7 @@ export default function Home() {
         viewSlider={setShowSlider}
         viewPagination={setShowPagination}
       />
-      <Hero showSlider={showSlider} />
+      <Hero showSlider={showSlider} view={view}/>
       {games.length && showPagination ? (
         <Pagination
           count={99}
