@@ -4,14 +4,20 @@ import React from 'react';
 
 function ReviewsList({ reviews, mobile }) {
   return (
-    <Grid container spacing={mobile ? 2 : 1} sx={{ p: 3, borderRadius: 5 }}>
+    <Grid container spacing={mobile ? 2 : 1} sx={{ p: 3, borderRadius: 5 }} justifyContent='center'>
       {reviews.map((review) => (
         <Grid
           item
           key={review.reviewerName + '/' + review.gameName}
-          xs={mobile ? 12 : 6}>
+          xs={mobile ? 12 : 4}>
           <Paper
-            sx={{ backgroundColor: '#05101C', display: 'flex', p: 3, gap: 2, width: 'max-content' }}>
+            sx={{
+              backgroundColor: '#05101C',
+              display: 'flex',
+              p: 3,
+              gap: 2,
+              width: mobile ? '90%' : '85%',
+            }}>
             <Paper
               sx={{
                 p: 1,
@@ -24,7 +30,12 @@ function ReviewsList({ reviews, mobile }) {
                 alt={review.gameName}
                 width={150}
               />
-              <Typography mt={1}>{review.gameName}</Typography>
+              <Typography
+                mt={1}
+                sx={{ wordBreak: 'break-word' }}
+                maxWidth='150px'>
+                {review.gameName}
+              </Typography>
               <hr style={{ width: '80%' }} />
               <Typography variant='subtitle2'>{`${review.reviewerName}'s rating:`}</Typography>
               <Rating
@@ -40,8 +51,11 @@ function ReviewsList({ reviews, mobile }) {
                 display: 'flex',
                 flexDirection: 'column',
                 backgroundColor: 'transparent',
+                width: '100%'
               }}>
-              <Typography fontFamily='Righteous' sx={{ mb: 1 }}>{`${review.reviewerName}'s review:`}</Typography>
+              <Typography
+                fontFamily='Righteous'
+                sx={{ mb: 1 }}>{`${review.reviewerName}'s review:`}</Typography>
               <TextField
                 defaultValue={review.reviewDetails}
                 InputProps={{ readOnly: true }}
