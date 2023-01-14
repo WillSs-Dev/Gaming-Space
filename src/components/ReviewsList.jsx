@@ -9,7 +9,7 @@ function ReviewsList({ reviews, mobile }) {
         <Grid
           item
           key={review.reviewerName + '/' + review.gameName}
-          xs={mobile ? 12 : 4}>
+          xs={mobile ? 12 : 0}>
           <Paper
             sx={{
               backgroundColor: '#05101C',
