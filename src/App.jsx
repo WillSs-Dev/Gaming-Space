@@ -19,7 +19,6 @@ function App() {
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/profile' element={<Profile />} />
         <Route exact path='/library' element={<Library />} />
-        <Route exact path='/faq' element={<FAQ />} />
         <Route exact path='/games/:id' element={<GameDetailsPage />} />
       </Routes>
     </div>
