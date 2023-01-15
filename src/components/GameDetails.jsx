@@ -57,7 +57,7 @@ function GameDetails({ game, mobile }) {
   useEffect(() => {
     const requirements = game.platforms.find(
       ({ platform }) => platform.name === 'PC'
-    ).requirements;
+    )?.requirements;
     setPcRequirements(requirements);
 
     const gameIsInLibrary = gamesInLibrary.some(
@@ -218,7 +218,7 @@ function GameDetails({ game, mobile }) {
           <Typography variant='h5' fontFamily='Righteous' sx={{ mt: 1 }}>
             PC Requirements
           </Typography>
-          {pcRequirements.minimum ? (
+          {pcRequirements?.minimum ? (
             <>
               <Paper
                 sx={{ mt: 2 }}
