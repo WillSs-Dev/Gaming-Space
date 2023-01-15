@@ -102,7 +102,7 @@ function Slider() {
                     Released on:
                   </Typography>
                   <Grid container spacing={1}>
-                    {game.parent_platforms.map(({ platform }) => (
+                    {game.parent_platforms?.map(({ platform }) => (
                       <Grid item key={platform.id}>
                         <Chip
                           label={platform.name}
