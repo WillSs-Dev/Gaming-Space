@@ -8,7 +8,6 @@ import {
 } from '../components';
 import { Paper, Typography } from '@mui/material';
 import { useMediaQuery, useTheme } from '@mui/material';
-// import { userReviews } from '../utils/mock-reviews.js';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectGamesInLibrary } from '../redux/reducers/libraryReducer';
