@@ -6,22 +6,23 @@ import {
   ToggleButtonGroup,
   ToggleButton,
   Avatar,
+  Stack,
 } from '@mui/material';
-import { Menu } from '@mui/icons-material';
+import { SportsEsports } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 function Header() {
+  const [page, setPage] = useState('');
+  
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
   const location = useLocation();
   const images = JSON.parse(localStorage.getItem('images'));
-
   const { pathname } = location;
 
-  const [page, setPage] = useState('');
 
   useEffect(() => {
     const page = pathname.split('/')[1];
@@ -33,21 +34,19 @@ function Header() {
       <Toolbar
         disableGutters={mobile ? true : false}
         sx={{ justifyContent: 'space-around', gap: mobile ? 5 : 45 }}>
-        <IconButton sx={{ color: '#f6f6f6', display: mobile ? '' : 'none' }}>
-          <Menu fontSize='large' />
-        </IconButton>
-
-        <ToggleButtonGroup exclusive value={page}>
-          <ToggleButton value={'store'} onClick={() => navigate('/store')}>
-            Store
-          </ToggleButton>
-          <ToggleButton value={'library'} onClick={() => navigate('/library')}>
-            My Games
-          </ToggleButton>
-          <ToggleButton value={'faq'} onClick={() => navigate('/faq')}>
-            FAQ
-          </ToggleButton>
-        </ToggleButtonGroup>
+        <Stack direction='row' alignItems='center' spacing={4}>
+          <SportsEsports fontSize='large' />
+          <ToggleButtonGroup exclusive value={page}>
+            <ToggleButton value={'store'} onClick={() => navigate('/store')}>
+              Store
+            </ToggleButton>
+            <ToggleButton
+              value={'library'}
+              onClick={() => navigate('/library')}>
+              My Games
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Stack>
 
         <Link to='/profile'>
           <IconButton>
