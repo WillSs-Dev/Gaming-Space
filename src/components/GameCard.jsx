@@ -52,7 +52,7 @@ function GameCard({ game, mobile }) {
           ))}
           <Typography variant='body2'>Platforms:</Typography>
           <Grid container spacing={0} direction='row'>
-            {game.parent_platforms.map(({ platform }) => (
+            {game.parent_platforms?.map(({ platform }) => (
               <Grid item key={platform.id}>
                 <Chip
                   sx={{ pl: 0.5, m: 0.5 }}
