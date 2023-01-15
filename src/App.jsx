@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Library from './pages/Library';
-import FAQ from './pages/FAQ';
 import Login from './pages/Login';
 import GameDetailsPage from './pages/GameDetailsPage';
 import Redirect from './pages/Redirect';
