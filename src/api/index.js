@@ -1,5 +1,6 @@
 const options = {
   method: 'GET',
+  Headers: { 'Access-Control-Allow-Origin': '*' },
 };
 
 const baseUrl = 'https://api.rawg.io/api';
