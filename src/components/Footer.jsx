@@ -10,7 +10,7 @@ function Footer() {
         </Typography>
         <span>-</span>
         <Typography variant="body1">
-          Made with: React and MUI
+          Made with: React, MUI and ❤️
         </Typography>
       </Toolbar>
     </AppBar>
