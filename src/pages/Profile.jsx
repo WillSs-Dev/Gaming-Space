@@ -64,7 +64,7 @@ function Profile() {
             sx={{ mx: 'auto', my: 4 }}
             variant='h5'
             fontFamily='Righteous'>
-            No games here yet 😕
+            No games here yet! 😕
           </Typography>
         </Paper>
       )}
