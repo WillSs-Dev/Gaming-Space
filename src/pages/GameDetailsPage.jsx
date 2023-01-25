@@ -26,6 +26,7 @@ function GameDetailsPage() {
     <Paper
       sx={{
         minHeight: '100vH',
+        overflowX: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
