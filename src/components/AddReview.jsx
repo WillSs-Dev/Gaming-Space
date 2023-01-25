@@ -60,24 +60,23 @@ function AddReview({ mobile, game, userReviews }) {
           display: 'flex',
           flexDirection: mobile ? 'row' : 'column',
           p: 2,
-          gap: 2,
           alignItems: 'center',
           justifyContent: 'space-evenly',
           borderRadius: 5
         }}>
         <Avatar
           src={images ? images.profile : null}
-          sx={{ border: '3px solid #f6f6f6', width: 80, height: 80 }}>
+          sx={{ border: '3px solid #f6f6f6', width: mobile ? 80 : 60, height: mobile ? 80 : 60 }}>
           A
         </Avatar>
         <Paper sx={{ textAlign: 'center' }}>
-          <Typography component='legend' sx={{fontSize: '1.5rem'}}>Your final rating:</Typography>
+          <Typography component='legend' sx={{fontSize: mobile ? '1.5rem' : '1.2rem'}}>Your final rating:</Typography>
           <Rating
             value={rate}
             onChange={(__e, newValue) => setRate(newValue)}
             precision={0.5}
             size='large'
-            emptyIcon={<StarBorderOutlined sx={{ color: '#f6f6f6' }} />}
+            emptyIcon={<StarBorderOutlined fontSize='madium' sx={{ color: '#f6f6f6' }} />}
           />
           {rate ? <hr /> : ''}
           {rate ? (
