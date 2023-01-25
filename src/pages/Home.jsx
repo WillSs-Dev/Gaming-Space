@@ -50,6 +50,8 @@ export default function Home() {
         background:
           'linear-gradient(-120deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 50%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 120%)',
         display: 'flex',
+        overflowX: 'hidden',
+        minWidth: '100vW',
         flexDirection: 'column',
         alignItems: 'center',
       }}>
@@ -66,7 +68,7 @@ export default function Home() {
           page={pagination}
           siblingCount={1}
           boundaryCount={1}
-          size={'large'}
+          size={mobile ? 'medium' :'large'}
           shape='rounded'
           sx={{ backgroundColor: 'rgba(32,80,148,0.43)', borderRadius: 15 }}
           onChange={(__e, value) => {
@@ -88,10 +90,10 @@ export default function Home() {
           page={pagination}
           siblingCount={1}
           boundaryCount={1}
-          size={'large'}
+          size={mobile ? 'medium' :'large'}
           shape='rounded'
           sx={{
-            mb: games.length ? 3 : 11,
+            mb: games.length ? 3 : 24,
             backgroundColor: 'rgba(4,53,108,255)',
             borderRadius: 15,
           }}
