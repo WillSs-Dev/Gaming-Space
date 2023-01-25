@@ -86,7 +86,7 @@ function AddReview({ mobile, game, userReviews }) {
           )}
         </Paper>
       </Paper>
-      <FormControl>
+      <FormControl sx={{alignItems: 'center'}}>
         <Dialog
           open={showAlert}
           onClick={() => setShowAlert(false)}
