@@ -51,7 +51,6 @@ export default function Home() {
           'linear-gradient(-120deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 50%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 120%)',
         display: 'flex',
         overflowX: 'hidden',
-        minWidth: '100vW',
         flexDirection: 'column',
         alignItems: 'center',
       }}>
