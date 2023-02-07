@@ -39,6 +39,7 @@ function Profile() {
       sx={{
         background:
           'linear-gradient(-120deg, rgba(4,0,30,1) 0%, rgba(11,15,46,1) 15%, rgba(20,28,93,1) 75%, rgba(2,106,208,1) 120%)',
+          overflowX: 'hidden',
       }}>
       <Header />
       <ProfileInfo mobile={mobile} />
@@ -64,7 +65,7 @@ function Profile() {
             sx={{ mx: 'auto', my: 4 }}
             variant='h5'
             fontFamily='Righteous'>
-            No games here yet 😕
+            No games here yet! 😕
           </Typography>
         </Paper>
       )}

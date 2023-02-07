@@ -31,12 +31,18 @@ function Slider() {
   const { games } = useSelector(selectGamesInCatalog);
 
   useEffect(() => {
-    const fiveGames = games.slice(10, 15)
+    const fiveGames = games.slice(10, 15);
     setSlides(fiveGames);
   }, [games]);
 
   return (
-    <Paper sx={{ p: 2, m: 'auto', borderRadius: '15px', maxWidth: '80vW' }}>
+    <Paper
+      sx={{
+        p: 2,
+        m: 'auto',
+        borderRadius: '15px',
+        maxWidth: mobile ? '85vW' : '80vW',
+      }}>
       <Swiper
         modules={[Navigation, Pagination]}
         slidesPerView={1}
@@ -51,16 +57,16 @@ function Slider() {
                 display: 'flex',
                 flexDirection: mobile ? 'column' : 'row',
                 px: 5,
-                py: 3,
+                py: mobile ? 1 : 3,
                 justifyContent: 'space-evenly',
               }}>
               <Link to={`/games/${game.id}`}>
                 <CardMedia
                   component='img'
                   sx={{
-                    maxWidth: mobile ? 800 : 600,
-                    maxHeight: 300,
-                    minHeight: 300,
+                    maxWidth: mobile ? 1000 : 700,
+                    maxHeight: mobile ? 200 : 350,
+                    minHeight: mobile ? 200 : 350,
                     borderRadius: '15px',
                   }}
                   alt={game.name}
@@ -68,13 +74,13 @@ function Slider() {
                 />
               </Link>
               <Box>
-                <CardContent sx={{ p: 2 }}>
+                <CardContent sx={{ p: 2, textAlign: 'center' }}>
                   <Link to={`/games/${game.id}`}>
-                    <Typography variant='h4' color={palette.text.primary}>
+                    <Typography variant='h5' color={palette.text.primary}>
                       {game.name}
                     </Typography>
                   </Link>
-                  <Typography variant='body1' color='palette.text.primary'>
+                  <Typography variant='body2' color='palette.text.primary'>
                     Release date: {game.released}
                   </Typography>
                   <Chip
@@ -83,12 +89,12 @@ function Slider() {
                     label={`Rating: ${game.rating}`}
                   />
                   <Typography
-                    variant='h5'
+                    variant='h6'
                     color='palette.text.primary'
                     sx={{ mt: 1 }}>
                     Genres
                   </Typography>
-                  <Grid container>
+                  <Grid container justifyContent='center'>
                     {game.genres.map((genre) => (
                       <Grid item key={genre.id}>
                         <Chip label={genre.name} sx={{ pl: 0.5, m: 0.5 }} />
@@ -96,12 +102,12 @@ function Slider() {
                     ))}
                   </Grid>
                   <Typography
-                    variant='h5'
+                    variant='h6'
                     color='palette.text.primary'
                     sx={{ mt: 1 }}>
                     Released on:
                   </Typography>
-                  <Grid container spacing={1}>
+                  <Grid container spacing={1} justifyContent='center'>
                     {game.parent_platforms?.map(({ platform }) => (
                       <Grid item key={platform.id}>
                         <Chip

@@ -9,21 +9,29 @@ function ReviewsList({ reviews, mobile }) {
         <Grid
           item
           key={review.reviewerName + '/' + review.gameName}
-          xs={mobile ? 12 : 0}>
+          xs={mobile ? 12 : 0}
+          sx={{m: 'auto'}}
+          >
           <Paper
             sx={{
               backgroundColor: '#05101C',
               display: 'flex',
+              flexDirection: mobile ? 'column' : 'row', 
               p: 3,
               gap: 2,
-              width: mobile ? '90%' : '85%',
+              maxWidth: mobile ? '50vw' : '30vw',
             }}>
             <Paper
               sx={{
-                p: 1,
+                py: 2,
+                px: mobile ? 0 : 2,
                 height: 'fit-content',
                 borderRadius: 2,
                 textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: '100%',
               }}>
               <img
                 src={review.backgroundImage}
@@ -33,7 +41,8 @@ function ReviewsList({ reviews, mobile }) {
               <Typography
                 mt={1}
                 sx={{ wordBreak: 'break-word' }}
-                maxWidth='150px'>
+                // maxWidth='50%'
+                variant='h5'>
                 {review.gameName}
               </Typography>
               <hr style={{ width: '80%' }} />
@@ -51,10 +60,12 @@ function ReviewsList({ reviews, mobile }) {
                 display: 'flex',
                 flexDirection: 'column',
                 backgroundColor: 'transparent',
-                width: '100%'
+                // maxWidth: '90%',
               }}>
               <Typography
                 fontFamily='Righteous'
+                variant='h6'
+                textAlign='center'
                 sx={{ mb: 1 }}>{`${review.reviewerName}'s review:`}</Typography>
               <TextField
                 defaultValue={review.reviewDetails}

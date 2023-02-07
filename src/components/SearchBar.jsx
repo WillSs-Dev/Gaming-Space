@@ -70,7 +70,7 @@ function SearchBar({ viewSlider, viewPagination, setPagination }) {
           backgroundColor: palette.background.paper,
           justifyContent: 'space-around',
         }}>
-        <ButtonGroup variant='text' color='info'>
+        <ButtonGroup variant='text' color='info' size='small'>
           <Button onClick={() => {viewSlider(false); handleCategoryChange('All')}}>All</Button>
           <Button
             onClick={() => viewSlider(false)}
@@ -85,7 +85,8 @@ function SearchBar({ viewSlider, viewPagination, setPagination }) {
                 label='CATEGORY'
                 labelId='category-label'
                 variant='standard'
-                value={selectedCategory}>
+                value={selectedCategory}
+                size='small'>
                 {categories.map((category) => (
                   <MenuItem
                     key={category.id}

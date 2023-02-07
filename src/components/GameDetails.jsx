@@ -83,7 +83,7 @@ function GameDetails({ game, mobile }) {
           flexDirection: mobile ? 'column' : 'row',
           my: 1,
           alignItems: 'center',
-          maxWidth: '80vW',
+          maxWidth: '75vW',
           mx: 'auto',
           p: 5,
           borderRadius: 3,
@@ -93,7 +93,7 @@ function GameDetails({ game, mobile }) {
           slidesPerView={1}
           navigation={{ clickable: true }}
           pagination
-          style={{ maxWidth: mobile ? '70vW' : '50vW' }}
+          style={{ maxWidth: mobile ? '75vW' : '50vW' }}
           loop>
           {game.screenshots.map((slide, index) => (
             <SwiperSlide key={slide.id}>
@@ -132,7 +132,7 @@ function GameDetails({ game, mobile }) {
             avatar={<Avatar>R</Avatar>}
             label={`Rating: ${game.rating}`}
           />
-          <Typography variant='h5' sx={{ mt: 1 }}>
+          <Typography variant='h6' sx={{ mt: 1 }}>
             Genres
           </Typography>
           <Grid container justifyContent='center'>
@@ -142,7 +142,7 @@ function GameDetails({ game, mobile }) {
               </Grid>
             ))}
           </Grid>
-          <Typography variant='h5' sx={{ mt: 1 }}>
+          <Typography variant='h6' sx={{ mt: 1 }}>
             Released on:
           </Typography>
           <Grid container spacing={1} justifyContent='center'>
@@ -166,7 +166,7 @@ function GameDetails({ game, mobile }) {
               variant='contained'
               sx={{ mt: 1 }}
               onClick={handleAddtoLibrary}>
-              Library{' '}
+              Library
               {gameInLibrary ? (
                 <Check sx={{ mr: -1, ml: 1 }} />
               ) : (
@@ -178,7 +178,7 @@ function GameDetails({ game, mobile }) {
               color='error'
               sx={{ mt: 1 }}
               onClick={handleFavorite}>
-              Favorite{' '}
+              Favorite
               {gameFavorite ? (
                 <Favorite sx={{ mr: -1, ml: 1 }} />
               ) : (
@@ -190,15 +190,15 @@ function GameDetails({ game, mobile }) {
       </Paper>
       <CTA game={game} />
       <hr style={{ width: '90vW' }} />
-      <Paper sx={{ px: 4, py: 2, display: mobile ? 'block' : 'flex', mt: 2 }}>
-        <Paper sx={{ maxWidth: mobile ? '100vW' : '40vW' }}>
+      <Paper sx={{ px: 4, py: 2, display: mobile ? 'block' : 'flex', mt: 2, maxWidth: mobile ? '80vW' : 'auto' }}>
+        <Paper sx={{ maxWidth: mobile ? 'auto' : '40vW' }}>
           <Typography variant='h5' fontFamily='Righteous' sx={{ mt: 1 }}>
             Description
           </Typography>
           <Paper dangerouslySetInnerHTML={{ __html: game.description }} />
         </Paper>
         <Paper sx={{ ml: mobile ? 0 : 6, my: mobile ? 3 : 0 }}>
-          <Typography variant='h5' fontFamily='Righteous' sx={{ mt: 1 }}>
+          <Typography variant='h6' fontFamily='Righteous' sx={{ mt: 1 }}>
             Platforms
           </Typography>
           <List sx={{ ml: -1.5, maxWidth: 'fit-content' }}>
@@ -215,7 +215,7 @@ function GameDetails({ game, mobile }) {
             mb: 2,
             maxWidth: mobile ? '90vW' : '30vW',
           }}>
-          <Typography variant='h5' fontFamily='Righteous' sx={{ mt: 1 }}>
+          <Typography variant='h6' fontFamily='Righteous' sx={{ mt: 1 }}>
             PC Requirements
           </Typography>
           {pcRequirements?.minimum ? (

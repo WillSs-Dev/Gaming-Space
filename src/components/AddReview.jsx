@@ -50,7 +50,7 @@ function AddReview({ mobile, game, userReviews }) {
         backgroundColor: '#05101C',
         p: 3,
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: mobile ? 'column' : 'row',
         maxWidth: 'fit-content',
         gap: 1,
         m: 2,
@@ -58,24 +58,25 @@ function AddReview({ mobile, game, userReviews }) {
       <Paper
         sx={{
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: mobile ? 'row' : 'column',
           p: 2,
-          gap: 2,
           alignItems: 'center',
-          maxHeight: 200,
+          justifyContent: 'space-evenly',
+          borderRadius: 5
         }}>
         <Avatar
           src={images ? images.profile : null}
-          sx={{ border: '3px solid #f6f6f6', width: 60, height: 60 }}>
+          sx={{ border: '3px solid #f6f6f6', width: mobile ? 80 : 60, height: mobile ? 80 : 60 }}>
           A
         </Avatar>
-        <Paper>
-          <Typography component='legend'>Your final rating:</Typography>
+        <Paper sx={{ textAlign: 'center' }}>
+          <Typography component='legend' sx={{fontSize: mobile ? '1.5rem' : '1.2rem'}}>Your final rating:</Typography>
           <Rating
             value={rate}
             onChange={(__e, newValue) => setRate(newValue)}
             precision={0.5}
-            emptyIcon={<StarBorderOutlined sx={{ color: '#f6f6f6' }} />}
+            size='large'
+            emptyIcon={<StarBorderOutlined fontSize='madium' sx={{ color: '#f6f6f6' }} />}
           />
           {rate ? <hr /> : ''}
           {rate ? (
@@ -85,7 +86,7 @@ function AddReview({ mobile, game, userReviews }) {
           )}
         </Paper>
       </Paper>
-      <FormControl>
+      <FormControl sx={{alignItems: 'center'}}>
         <Dialog
           open={showAlert}
           onClick={() => setShowAlert(false)}
