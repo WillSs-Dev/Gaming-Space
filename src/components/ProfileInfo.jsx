@@ -25,16 +25,6 @@ function ProfileInfo({ mobile }) {
   const storedImages = localStorage.getItem('images');
 
   useEffect(() => {
-    if (!storedImages) {
-      const defaultImages = {
-        profile:
-          'https://play-lh.googleusercontent.com/coMv1dl31PCfEs6essJoEUwVryaqKHKQvENdZ_WYpN-PXa8Qfitkg3grQxIVN22W5A',
-        background:
-          'https://wallpapers.com/images/hd/widescreen-starry-night-sky-p7jj72xgabn10f13.jpg',
-      };
-      localStorage.setItem('images', JSON.stringify(defaultImages));
-      setImages(defaultImages);
-    }
     setImages(JSON.parse(storedImages));
   }, [storedImages]);
 
