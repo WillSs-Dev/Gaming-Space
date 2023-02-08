@@ -63,7 +63,7 @@ function ProfileInfo({ mobile }) {
             sx={{
               transform: 'translate(0, -40%)',
               p: 1,
-              ml: mobile ? 2 : 15,
+              ml: mobile ? 0 : 15,
             }}>
             <Avatar
               src={images ? images.profile : ''}
@@ -101,7 +101,7 @@ function ProfileInfo({ mobile }) {
             alignItems: 'center',
           }}>
           <IconButton sx={{ gap: 1 }} onClick={openBackdrop}>
-            <Typography variant='subtitle1'>Edit profile</Typography>
+            {!mobile && <Typography variant='subtitle1'>Edit profile</Typography>}
             <Edit />
           </IconButton>
           <Dialog open={editOpen}>

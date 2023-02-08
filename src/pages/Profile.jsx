@@ -103,8 +103,8 @@ function Profile() {
           </Typography>
         </Paper>
       )}
-      <hr style={{ maxWidth: '78vW' }} />
-      <Footer />
+      <hr style={{ maxWidth: '78vW', marginBottom: mobile ? '10vH' : 0 }} />
+      <Footer mobile={mobile} />
     </Paper>
   );
 }
