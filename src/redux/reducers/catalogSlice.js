@@ -26,7 +26,7 @@ const requestNewGames = (navNumber) => async (dispatch) => {
 
 const requestNewGamesByCategory = (navNumber, category) => async (dispatch) => {
   try {
-    const { results } = await getNewPageWithCategory(navNumber, category.toLowerCase());
+    const { results } = await getNewPageWithCategory(navNumber, category.toLowerCase().replace(/\s/g, '-'));
     dispatch(storeRequestedGames(results));
   } catch (e) {
     console.log(e);
